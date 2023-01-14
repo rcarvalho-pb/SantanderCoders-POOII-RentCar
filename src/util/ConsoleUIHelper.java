@@ -2,37 +2,21 @@ package util;
 
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUIHelper {
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
 
     public static String askSimpleInput(String message) {
         System.out.printf("%s%n# : ", message);
         return new Scanner(System.in).nextLine().trim();
     }
 
-    public static String askNoEmptyInput(String message, int retries) {
-        System.out.printf("%s%n# : ", message);
+    public static int askID(List<?> lista) {
+        if (lista.isEmpty())
+            return -1;
         Scanner sc = new Scanner(System.in);
-        String input;
-        int tries = 0;
-        do {
-            input = sc.nextLine().trim();
-            tries++;
-        } while (input.isBlank() && retries > 0 && tries < retries);
-        return input;
-    }
-
-    public static int askChooseOption(String message, String... options) {
-        System.out.printf("%s%n# : ", message);
-        for (int i = 0; i < options.length; i++) {
-            System.out.printf("%d - %s%n# : ", i, options[i]);
-        }
-        Scanner sc = new Scanner(System.in);
+        System.out.printf("%s%n# : ", "Digite o Id");
         int choose;
         do {
             try {
@@ -41,7 +25,30 @@ public class ConsoleUIHelper {
                 choose = -9;
                 sc.nextLine();
             }
-        } while (choose < 0 || choose >= options.length);
+        } while (choose < 0 || choose >= lista.size());
+        return choose;
+    }
+
+    public static int printChooseOption(String message, String... options){
+        System.out.printf("%s%n# : ", message);
+        for (int i = 0; i < options.length; i++) {
+            System.out.printf("%d - %s%n# : ", i, options[i]);
+        }
+        return options.length;
+    }
+
+    public static int chooseOption(int length) {
+        Scanner sc = new Scanner(System.in);
+        int choose;
+        do {
+            try {
+                choose = sc.nextInt();
+            } catch (InputMismatchException e) {
+                choose = -9;
+                sc.nextLine();
+                System.out.println("\nOpção inválida\n");
+            }
+        } while (choose < 0 || choose >= length);
         return choose;
     }
 
@@ -49,8 +56,8 @@ public class ConsoleUIHelper {
         String[] op = new String[2];
         op[0] = yes;
         op[1] = no;
-        //askChooseOption(message, op);
-        return askChooseOption(message, yes, no) == 0;
+        printChooseOption(message, yes, no);
+        return chooseOption(2) == 0;
     }
 
     public static BigDecimal askNumber(String message) {
