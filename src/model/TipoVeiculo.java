@@ -7,6 +7,13 @@ public enum TipoVeiculo {
     CARRO(new BigDecimal("150.00")),
     CAMINHAO(new BigDecimal("200.00"));
 
-    TipoVeiculo(BigDecimal VALOR_ALUGUEL) {
+    BigDecimal valorAluguel;
+
+    TipoVeiculo(BigDecimal valorAluguel) {
+        
+    }
+
+    public BigDecimal valorAluguel(){
+        return valorAluguel;
     }
 }

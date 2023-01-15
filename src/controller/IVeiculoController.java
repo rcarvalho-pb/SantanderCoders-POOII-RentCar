@@ -1,8 +1,12 @@
 package controller;
 
+import java.util.List;
+
+import model.Veiculo;
+
 public interface IVeiculoController {
     void cadastrarVeiculo();
     void alterarVeiculo();
-    void buscarVeiculo();
+    List<Veiculo> buscarVeiculo();
 
 }

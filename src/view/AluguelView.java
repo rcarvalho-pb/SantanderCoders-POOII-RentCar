@@ -44,4 +44,11 @@ public class AluguelView implements IView, IAluguelView{
         return null;
     }
 
+    public String obterDataRetiradaCompleta(){
+        return ConsoleUIHelper.askSimpleInput("Data de Retirada (dd/mm/aaaa hh:mm):");
+    }
+    
+    public String obterDataDevolucaoCompleta(){
+        return ConsoleUIHelper.askSimpleInput("Data de Devolução (dd/mm/aaaa hh:mm):");
+    }
 }

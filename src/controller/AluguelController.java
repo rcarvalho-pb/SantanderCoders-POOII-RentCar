@@ -1,8 +1,12 @@
 package controller;
 
+import java.time.LocalDateTime;
+
+import model.Agencia;
 import model.Aluguel;
 import persistence.AluguelEmMemoriaRepository;
 import util.Constantes;
+import util.DataFormatada;
 import view.AluguelView;
 
 public class AluguelController implements IAluguelController{
@@ -19,14 +23,14 @@ public class AluguelController implements IAluguelController{
     }
     @Override
     public void alugar() {
+            AgenciaController.getInstancia().buscarAgencia();
             String agencia = ALUGUEL_VIEW.obterAgencia();
             String veiculo = ALUGUEL_VIEW.obterVeiculo();
-            String ano = ALUGUEL_VIEW.obterAno();
-            String mes = ALUGUEL_VIEW.obterMes();
-            String dia = ALUGUEL_VIEW.obterDia();
-            String hora = ALUGUEL_VIEW.obterHora();
-            String minuto = ALUGUEL_VIEW.obterMinuto();
-            Aluguel aluguel = new Aluguel(ano, mes, dia, hora, minuto);
+            String data = ALUGUEL_VIEW.obterDataRetiradaCompleta();
+            LocalDateTime dataInicioAluguel = DataFormatada.data(data);
+            data = ALUGUEL_VIEW.obterDataDevolucaoCompleta();
+            LocalDateTime dataFinalAluguel = DataFormatada.data(data);
+            Aluguel aluguel = new Aluguel(dataInicioAluguel, dataFinalAluguel, agencia, veiculo);
             if(ALUGUEL_REPOSITORY.salvar(aluguel)){
                 System.out.println("\nAluguel realizado com sucesso\n");
                 return;

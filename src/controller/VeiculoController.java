@@ -60,9 +60,11 @@ public class VeiculoController implements IVeiculoController{
     }
 
     @Override
-    public void buscarVeiculo() {
+    public List<Veiculo> buscarVeiculo() {
         String modeloASerProcurado = VEICULO_VIEW.obterModelo();
         List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(modeloASerProcurado);
         VEICULO_VIEW.imprimirLista(veiculosRetornados);
+
+        return veiculosRetornados;
     }
 }
