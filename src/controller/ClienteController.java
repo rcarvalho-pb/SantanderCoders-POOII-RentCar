@@ -1,5 +1,6 @@
 package controller;
 
+import model.Agencia;
 import model.Cliente;
 import model.TipoCliente;
 import model.Veiculo;
@@ -56,6 +57,8 @@ public class ClienteController implements IClienteController{
 
     @Override
     public void buscarCliente() {
-
+            String clienteBuscado = CLIENTE_VIEW.obterDadosPesquisa();
+            List<Cliente> clientesRetornados = CLIENTE_REPOSITORY.buscarPorDocumento(clienteBuscado);
+            CLIENTE_VIEW.imprimirLista(clientesRetornados);
     }
 }

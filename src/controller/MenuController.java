@@ -18,12 +18,13 @@ public class MenuController {
             case 5 -> AgenciaController.getInstancia().buscarAgencia();
             case 6 -> {ClienteController.getInstancia().cadastrarCliente();}
             case 7 -> {ClienteController.getInstancia().alterarCliente();}
-            case 8 -> {AluguelController.getInstancia().alugar();}
-            case 9 -> {}
+            case 8 -> {ClienteController.getInstancia().buscarCliente();}
+            case 9 -> {AluguelController.getInstancia().alugar();}
             case 10 -> {}
             case 11 -> {}
             case 12 -> {}
             case 13 -> {}
+            case 14 -> {}
             default -> System.out.println("\nErro desconhecido\n");       //tratamento de erro feito por ConsoleUIHelper
         }
     }

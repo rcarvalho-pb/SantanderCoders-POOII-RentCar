@@ -24,6 +24,7 @@ public class MenuView {
                 "Buscar uma agência por parte do nome ou logradouro do endereço",
                 "Cadastrar o cliente (Pessoa Física/Jurídica)",
                 "Alterar o cliente (Pessoa Física/Jurídica)",
+                "Buscar o cliente por documento",
                 "Alugar um Veículo para Pessoa Física",
                 "Alugar um Veículo para Pessoa Jurídica",
                 "Devolver um Veículo para Pessoa Física",

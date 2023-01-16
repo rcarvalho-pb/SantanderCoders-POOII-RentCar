@@ -6,4 +6,5 @@ public interface IClienteView {
     String obterNome();
     String obterDocumento();
     TipoCliente obterTipoCliente();
+    String obterDadosPesquisa();
 }

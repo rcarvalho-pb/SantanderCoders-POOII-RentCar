@@ -14,6 +14,10 @@ public class ClienteView implements IView, IClienteView {
     public String obterDocumento() {
         return ConsoleUIHelper.askSimpleInput("Entre com o documento do Cliente");
     }
+    @Override
+    public String obterDadosPesquisa() {
+        return ConsoleUIHelper.askSimpleInput("Entre com o Documento do cliente");
+    }
 
     @Override
     public TipoCliente obterTipoCliente() {
