@@ -37,11 +37,16 @@ public class Cliente implements IEntidade{
     public void setDocumento(String documento) {
         this.documento = documento;
     }
+    @Override
+    public String toString() {
+        return String.format("%-20s %-20s %-20s",
+                this.nome, this.documento, this.tipoCliente.toString());
+    }
 
     @Override
     public String getDadosCabecalho() {
-        return String.format("%-20s %-50s",
-                "Nome", "Documento");
+        return String.format("%-20s %-20s %-20s",
+                "Nome", "Documento", "Classificação");
     }
 
     @Override

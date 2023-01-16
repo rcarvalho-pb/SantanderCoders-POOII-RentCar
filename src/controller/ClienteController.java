@@ -2,9 +2,12 @@ package controller;
 
 import model.Cliente;
 import model.TipoCliente;
+import model.Veiculo;
 import persistence.ClienteEmMemoriaRepository;
 import util.Constantes;
 import view.ClienteView;
+
+import java.util.List;
 
 public class ClienteController implements IClienteController{
     private final ClienteView CLIENTE_VIEW;
@@ -31,10 +34,24 @@ public class ClienteController implements IClienteController{
         }
         System.out.println("\nCliente duplicado. Não foi cadastrado\n");
     }
-
+    private Cliente validarBuscaClientePorDocumento(){
+        Cliente cliente;
+        do{
+            String documento = CLIENTE_VIEW.obterDocumento();
+            cliente = CLIENTE_REPOSITORY.buscarPeloId(documento);
+        }while (cliente == null);
+        return cliente;
+    }
     @Override
     public void alterarCliente() {
-
+        List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
+        CLIENTE_VIEW.imprimirLista(clientes);
+        if(!Controller.isListaVazia(clientes)){
+            Cliente clienteASerAlterado = validarBuscaClientePorDocumento();
+            System.out.println("\nDigite os novos dados\n");
+            CLIENTE_REPOSITORY.remover(clienteASerAlterado.getDocumento());
+            cadastrarCliente();
+        }
     }
 
     @Override
