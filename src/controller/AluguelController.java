@@ -1,6 +1,7 @@
 package controller;
 
 import model.Aluguel;
+import persistence.AgenciaEmMemoriaRepository;
 import persistence.AluguelEmMemoriaRepository;
 import util.Constantes;
 import view.AluguelView;

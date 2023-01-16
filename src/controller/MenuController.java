@@ -16,7 +16,7 @@ public class MenuController {
             case 3 -> AgenciaController.getInstancia().cadastrarAgencia();
             case 4 -> AgenciaController.getInstancia().alterarAgencia();
             case 5 -> AgenciaController.getInstancia().buscarAgencia();
-            case 6 -> {}
+            case 6 -> {ClienteController.getInstancia().cadastrarCliente();}
             case 7 -> {}
             case 8 -> {AluguelController.getInstancia().alugar();}
             case 9 -> {}
