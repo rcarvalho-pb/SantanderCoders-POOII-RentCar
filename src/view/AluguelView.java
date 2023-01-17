@@ -44,4 +44,8 @@ public class AluguelView implements IView, IAluguelView{
         return null;
     }
 
+    public static AluguelView getInstance(){
+        return new AluguelView();
+    }
+
 }
