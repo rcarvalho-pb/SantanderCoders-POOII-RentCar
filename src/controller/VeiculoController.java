@@ -2,8 +2,8 @@ package controller;
 
 import model.TipoVeiculo;
 import model.Veiculo;
+import persistence.RepositoryFactory;
 import persistence.VeiculosEmMemoriaRepository;
-import util.Constantes;
 import view.VeiculoView;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class VeiculoController implements IVeiculoController{
     private final VeiculoView VEICULO_VIEW;
 
     private VeiculoController() {
-        this.VEICULO_VIEW = new VeiculoView();
-        this.VEICULOS_REPOSITORY = Constantes.VEICULOS_REPOSITORY;
+        this.VEICULO_VIEW = VeiculoView.getInstance();
+        this.VEICULOS_REPOSITORY = RepositoryFactory.VEICULOS_REPOSITORY;
     }
 
     public static VeiculoController getInstancia(){
@@ -23,11 +23,11 @@ public class VeiculoController implements IVeiculoController{
 
     @Override
     public void cadastrarVeiculo() {
-        String placa = VEICULO_VIEW.obterPlaca();
-        String cor = VEICULO_VIEW.obterCor();
-        String modelo = VEICULO_VIEW.obterModelo();
-        String fabricante = VEICULO_VIEW.obterFabricante();
-        TipoVeiculo tipoVeiculo = VEICULO_VIEW.obterTipoVeiculo();
+        String placa = VEICULO_VIEW.obterDadoString("Entre com o número da placa");
+        String cor = VEICULO_VIEW.obterDadoString("Entre com a cor do Veículo");
+        String modelo = VEICULO_VIEW.obterDadoString("Entre com o modelo do Veículo");
+        String fabricante = VEICULO_VIEW.obterDadoString("Entre com o nome do Fabricante");
+        TipoVeiculo tipoVeiculo = VEICULO_VIEW.obterDadoEnum("Tipo de Veículo", TipoVeiculo.class);
         Veiculo veiculo = new Veiculo(placa, cor, modelo, fabricante,tipoVeiculo);
         if(VEICULOS_REPOSITORY.salvar(veiculo)){
             System.out.println("\nVeículo cadastrado com sucesso\n");
@@ -41,7 +41,7 @@ public class VeiculoController implements IVeiculoController{
     private Veiculo validarBuscaVeiculoPorPlaca(){
         Veiculo veiculo;
         do{
-            String placa = VEICULO_VIEW.obterPlaca();
+            String placa = VEICULO_VIEW.obterDadoString("Entre com o número da placa");
             veiculo = VEICULOS_REPOSITORY.buscarPeloId(placa);
         }while (veiculo == null);
         return veiculo;
@@ -61,7 +61,7 @@ public class VeiculoController implements IVeiculoController{
 
     @Override
     public void buscarVeiculo() {
-        String modeloASerProcurado = VEICULO_VIEW.obterModelo();
+        String modeloASerProcurado = VEICULO_VIEW.obterDadoString("Entre com o modelo do Veículo");
         List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(modeloASerProcurado);
         VEICULO_VIEW.imprimirLista(veiculosRetornados);
     }
