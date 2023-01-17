@@ -2,7 +2,7 @@ package controller;
 
 import model.Agencia;
 import persistence.AgenciaEmMemoriaRepository;
-import util.Constantes;
+import persistence.RepositoryFactory;
 import view.AgenciaView;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class AgenciaController implements IAgenciaController{
     private final AgenciaEmMemoriaRepository AGENCIA_REPOSITORY;
 
     private AgenciaController() {
-        this.AGENCIA_VIEW = new AgenciaView();
-        this.AGENCIA_REPOSITORY = Constantes.AGENCIA_REPOSITORY;
+        this.AGENCIA_VIEW = AgenciaView.getInstance();
+        this.AGENCIA_REPOSITORY = RepositoryFactory.AGENCIA_REPOSITORY;
     }
 
     public static AgenciaController getInstancia(){
@@ -23,8 +23,8 @@ public class AgenciaController implements IAgenciaController{
 
     @Override
     public void cadastrarAgencia() {
-        String nome = AGENCIA_VIEW.obterNome();
-        String logradouro = AGENCIA_VIEW.obterLogradouro();
+        String nome = AGENCIA_VIEW.obterDadoString("Entre com o Nome da Agência");
+        String logradouro = AGENCIA_VIEW.obterDadoString("Entre com o logradouro");
         Agencia agencia = new Agencia(nome, logradouro);
         if(AGENCIA_REPOSITORY.salvar(agencia)){
             System.out.println("\nAgência cadastrada com sucesso\n");
@@ -36,7 +36,7 @@ public class AgenciaController implements IAgenciaController{
     private Agencia validarBuscaVeiculoPorPlaca(){
         Agencia agencia;
         do{
-            String nome = AGENCIA_VIEW.obterNome();
+            String nome = AGENCIA_VIEW.obterDadoString("Entre com o Nome da Agência");
             agencia = AGENCIA_REPOSITORY.buscarPeloId(nome);
         }while (agencia == null);
         return agencia;
@@ -57,7 +57,7 @@ public class AgenciaController implements IAgenciaController{
     @Override
     public void buscarAgencia() {
 
-        String agenciaBuscada = AGENCIA_VIEW.obterDadosPesquisa();
+        String agenciaBuscada = AGENCIA_VIEW.obterDadoString("Entre com o Nome ou logradouro da Agência");
         List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaBuscada);
         AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
     }

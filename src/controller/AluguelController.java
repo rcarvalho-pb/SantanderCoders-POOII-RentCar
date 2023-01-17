@@ -1,17 +1,16 @@
 package controller;
 
 import model.Aluguel;
-import persistence.AgenciaEmMemoriaRepository;
 import persistence.AluguelEmMemoriaRepository;
-import util.Constantes;
+import persistence.RepositoryFactory;
 import view.AluguelView;
 
 public class AluguelController implements IAluguelController{
-    private AluguelView ALUGUEL_VIEW = null;
-    private AluguelEmMemoriaRepository ALUGUEL_REPOSITORY = null;
+    private AluguelView ALUGUEL_VIEW;
+    private AluguelEmMemoriaRepository ALUGUEL_REPOSITORY;
     public AluguelController() {
-        ALUGUEL_VIEW = new AluguelView();
-        ALUGUEL_REPOSITORY  = Constantes.ALUGUEL_REPOSITORY;
+        ALUGUEL_VIEW = AluguelView.getInstance();
+        ALUGUEL_REPOSITORY  = RepositoryFactory.ALUGUEL_REPOSITORY;
     }
 
 
