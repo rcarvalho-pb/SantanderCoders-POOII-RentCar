@@ -78,24 +78,4 @@ public class Veiculo implements IEntidade {
     public String getId() {
         return this.placa;
     }
-
-    public boolean veiculoAlugado(){
-        if (disponivel == false){
-            System.out.println("Veiculo já está alugado. ");
-            return false;
-        }
-
-        disponivel = !disponivel;
-        return true;
-    }
-
-    public boolean veiculoRetornado(){
-        if (disponivel == true){
-            System.out.println("O carro já está na loja. ");
-            return false;
-        }
-
-        disponivel = !disponivel;
-        return true;
-    }
 }

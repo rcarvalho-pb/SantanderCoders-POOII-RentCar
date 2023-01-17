@@ -8,9 +8,10 @@ public class AgenciaEmMemoriaRepository extends RepositorioGenericoAbstract<Agen
 
     @Override
     public List<Agencia> buscarPorNomeOuLogradouro(String nomeOuLogradouro) {
-        return this.entidades.stream()
-                .filter(agencia -> agencia.getNome().concat(
-                        agencia.getLogradouro()).toLowerCase().contains(nomeOuLogradouro.toLowerCase()))
+      return this.entidades.stream()
+              .filter(agencia -> agencia.getNome().concat(
+                      agencia.getLogradouro()).toLowerCase().contains(nomeOuLogradouro.toLowerCase()))
                 .toList();
     }
+    
 }

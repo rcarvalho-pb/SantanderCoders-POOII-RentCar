@@ -1,35 +1,60 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.UUID;
 
 public class Aluguel implements IEntidade {
-    private LocalDateTime dataInicioAluguel;
-    private LocalDateTime dataFinalAluguel;
-    private String agencia;
-    private String veiculo;
+    private LocalDateTime dataRetirada;
+    private LocalDateTime dataDevolucao;
+    private Veiculo veiculo;
+    private Agencia agencia;
+    private Cliente cliente;
+    private UUID id;
+    private Long quantidadeDeDiasAlugado;
+    
 
-    public Aluguel(LocalDateTime dataInicioAluguel, LocalDateTime dataFinalAluguel, String agencia, String veiculo) {
-        
-        this.dataInicioAluguel = dataInicioAluguel;
-        this.dataFinalAluguel = dataFinalAluguel;
-        this.agencia = agencia;
-        this.veiculo = veiculo;
-    }
-
-
-    public LocalDateTime getDataAluguel() {
-        return dataInicioAluguel;
-    }
-
-    public void MudarDataFinalAluguel(LocalDateTime novaDataFinal) {
-        if(dataFinalAluguel.isBefore(novaDataFinal)){
-            dataFinalAluguel = novaDataFinal;
-            return;
-        }
-        System.out.println("Data informada inválida. ");
+    public Aluguel(LocalDateTime dataRetirada,
+    LocalDateTime dataDevolucao, Veiculo veiculo,
+    Agencia agencia, Cliente cliente) {
+      if(!dataRetiradaValida(dataRetirada) || !dataDevolucaoValida(dataDevolucao)){
+        System.out.println("Data inválida. Não alugamos carro no passado.");
         return;
+      }
+      this.dataRetirada = dataRetirada;
+      this.dataDevolucao = dataDevolucao;
+      this.veiculo = veiculo;
+      this.agencia = agencia;
+      this.cliente = cliente;
+      id = UUID.randomUUID();
+      quantidadeDeDiasAlugado = ChronoUnit.DAYS.between(dataRetirada, dataDevolucao);
     }
 
+
+    
+    
+    public LocalDateTime getDataAluguel() {
+      return dataRetirada;
+    }
+    
+    public void alterarDataDevolução(LocalDateTime novaDataDevolucao) {
+      if(novaDataDevolucao.isBefore(dataRetirada)){
+          System.out.println("Data inválida. Data anterior a data de retirada.");
+          return;
+        }
+        System.out.println("Data alterada. ");
+        dataDevolucao = novaDataDevolucao;
+    }
+
+    private Boolean dataRetiradaValida(LocalDateTime dataRetirada){
+      if(dataRetirada.isBefore(LocalDateTime.now())) return false;
+      return true;
+    }
+    
+    private boolean dataDevolucaoValida(LocalDateTime dataDevolucao) {
+      if (dataDevolucao.isBefore(dataRetirada)) return false;
+      return true;
+    }
 
     @Override
     public String getDadosCabecalho() {
@@ -44,7 +69,7 @@ public class Aluguel implements IEntidade {
 
     @Override
     public String getId() {
-        return this.dataInicioAluguel.toString();
+        return id.toString();
     }
 
 

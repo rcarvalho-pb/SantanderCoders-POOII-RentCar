@@ -1,15 +1,8 @@
 package model;
 
 public enum TipoCliente {
-    PESSOA_FISICA(5), PESSOA_JURIDICA(10);
+    PESSOA_FISICA, PESSOA_JURIDICA;
 
-    
-    private int desconto;
-
-    TipoCliente(int desconto){
-        this.desconto = desconto;}
-
-    public int descontoPorCliente(){
-        return desconto;
+    TipoCliente() {
     }
 }
