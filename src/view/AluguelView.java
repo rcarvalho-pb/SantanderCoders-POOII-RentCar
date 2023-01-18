@@ -39,6 +39,10 @@ public class AluguelView implements IView, IAluguelView{
         return ConsoleUIHelper.askSimpleInput("Entre com o minuto");
     }
 
+    public String obterDataCompleta(){
+      return ConsoleUIHelper.askSimpleInput("Entre com a data para reserva: (dd/mm/aaaa hh:mm)");
+    }
+
     @Override
     public String mostrarDadosAluguel() {
         return null;

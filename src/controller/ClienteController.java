@@ -4,6 +4,7 @@ import model.Cliente;
 import model.TipoCliente;
 import persistence.ClienteEmMemoriaRepository;
 import persistence.RepositoryFactory;
+import util.ConsoleUIHelper;
 import view.ClienteView;
 
 import java.util.List;
@@ -58,5 +59,12 @@ public class ClienteController implements IClienteController{
             String clienteBuscado = CLIENTE_VIEW.obterDadoString("Entre com o Documento do cliente");
             List<Cliente> clientesRetornados = CLIENTE_REPOSITORY.buscarPorDocumento(clienteBuscado);
             CLIENTE_VIEW.imprimirLista(clientesRetornados);
+    }
+
+    public Cliente escolherCliente() {
+        String clienteString = ConsoleUIHelper.askSimpleInput("Qual o nome do cliente?");
+        List<Cliente> clientesRetornadas = CLIENTE_REPOSITORY.buscarPorNome(clienteString);
+        CLIENTE_VIEW.imprimirLista(clientesRetornadas);
+        return CLIENTE_REPOSITORY.selecionarCliente();
     }
 }

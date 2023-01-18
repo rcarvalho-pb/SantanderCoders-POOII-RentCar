@@ -1,36 +1,58 @@
 package controller;
 
+import java.time.LocalDateTime;
+
+import model.Agencia;
 import model.Aluguel;
-import persistence.AluguelEmMemoriaRepository;
+import model.Cliente;
+import model.Veiculo;
+import persistence.RepositorioGenericoAbstract;
 import persistence.RepositoryFactory;
-import view.AluguelView;
+import persistence.VeiculosEmMemoriaRepository;
+import util.ConsoleUIHelper;
+import util.DataFormatada;
+import view.AgenciaView;
+import view.VeiculoView;
+import view.ViewGenerico;
 
 public class AluguelController implements IAluguelController{
-    private AluguelView ALUGUEL_VIEW;
-    private AluguelEmMemoriaRepository ALUGUEL_REPOSITORY;
-    public AluguelController() {
-        ALUGUEL_VIEW = AluguelView.getInstance();
-        ALUGUEL_REPOSITORY  = RepositoryFactory.ALUGUEL_REPOSITORY;
-    }
+
+  private final ViewGenerico ALUGUEL_VIEW;
+  private final RepositorioGenericoAbstract<Aluguel> ALUGUEL_REPOSITORY;
+
+  public AluguelController(){
+    ALUGUEL_VIEW = AgenciaView.getInstance();
+    ALUGUEL_REPOSITORY = RepositoryFactory.ALUGUEL_REPOSITORY;
+  }
+
+  public static AluguelController getInstancia(){
+      return new AluguelController();
+  }
 
 
-    public static AluguelController getInstancia(){
-        return new AluguelController();
-    }
-    @Override
-    public void alugar() {
-            String agencia = ALUGUEL_VIEW.obterAgencia();
-            String veiculo = ALUGUEL_VIEW.obterVeiculo();
-            String ano = ALUGUEL_VIEW.obterAno();
-            String mes = ALUGUEL_VIEW.obterMes();
-            String dia = ALUGUEL_VIEW.obterDia();
-            String hora = ALUGUEL_VIEW.obterHora();
-            String minuto = ALUGUEL_VIEW.obterMinuto();
-            Aluguel aluguel = new Aluguel(ano, mes, dia, hora, minuto);
-            if(ALUGUEL_REPOSITORY.salvar(aluguel)){
-                System.out.println("\nAluguel realizado com sucesso\n");
-                return;
-            }
-            System.out.println("\nAluguel duplicado. Não foi cadastrado\n");
-    }
+@Override
+public void alugar() {
+  Cliente cliente = ClienteController.getInstancia().escolherCliente();  
+  Veiculo veiculo = VeiculoController.getInstancia().escolherVeiculoParaAlugar();
+  Agencia agencia = AgenciaController.getInstancia().escolherAgenciaParaAlugar();
+
+  LocalDateTime dataRetirada = DataFormatada.pegarLocalDateTime("Informe a data de retirada: (dd/mm/aaaa hh:mm)");
+
+  LocalDateTime dataDevolucao = DataFormatada.pegarLocalDateTime("Informe a data de devolução: (dd/mm/aaaa hh:mm)");
+
+  Aluguel aluguel = new Aluguel(dataRetirada, dataDevolucao, veiculo, agencia, cliente);
+  if(ALUGUEL_REPOSITORY.salvar(aluguel)){
+            System.out.printf("\nAluguel Efetuado com sucesso. Protocolo: %s\n\n", aluguel.getId());
+            return;
+        }
+        System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");
+
+}
+
+
+@Override
+public void devolver() {
+    // TODO Auto-generated method stub
+    
+}
 }
