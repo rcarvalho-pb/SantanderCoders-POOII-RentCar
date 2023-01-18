@@ -8,33 +8,46 @@ public class Aluguel implements IEntidade {
     private LocalDateTime dataRetirada;
     private LocalDateTime dataDevolucao;
     private Veiculo veiculo;
-    private Agencia agencia;
+    private Agencia agenciaRetirada;
+    private Agencia agenciaDevolucao;
     private Cliente cliente;
     private UUID id;
-    private Long quantidadeDeDiasAlugado;
     
 
     public Aluguel(LocalDateTime dataRetirada,
     LocalDateTime dataDevolucao, Veiculo veiculo,
-    Agencia agencia, Cliente cliente) {
-      if(!dataRetiradaValida(dataRetirada) || !dataDevolucaoValida(dataDevolucao)){
+    Agencia agenciaRetirada, Cliente cliente) {
+      if(!dataRetiradaValida(dataRetirada)){
         System.out.println("Data inválida. Não alugamos carro no passado.");
         return;
       }
+
+      if (dataDevolucao.isBefore(dataRetirada)){
+        System.out.println("Data inválida. Não é possível devolver o carro antes de alugar. ");
+        return;
+      }
+
+      id = UUID.randomUUID();
       this.dataRetirada = dataRetirada;
       this.dataDevolucao = dataDevolucao;
       this.veiculo = veiculo;
-      this.agencia = agencia;
+      this.agenciaRetirada = agenciaRetirada;
       this.cliente = cliente;
-      id = UUID.randomUUID();
-      quantidadeDeDiasAlugado = ChronoUnit.DAYS.between(dataRetirada, dataDevolucao);
+      this.agenciaDevolucao = null;
+
     }
 
-
-    
+    public Long quantidadeDeDiasAlugado(){
+      return ChronoUnit.DAYS.between(dataRetirada, dataDevolucao);
+    }    
     
     public LocalDateTime getDataAluguel() {
       return dataRetirada;
+    }
+
+    public void setAgenciaDevolucao(Agencia agenciaDevolucao){
+      this.agenciaDevolucao = agenciaDevolucao;
+
     }
     
     public void alterarDataDevolução(LocalDateTime novaDataDevolucao) {
@@ -50,10 +63,9 @@ public class Aluguel implements IEntidade {
       if(dataRetirada.isBefore(LocalDateTime.now())) return false;
       return true;
     }
-    
-    private boolean dataDevolucaoValida(LocalDateTime dataDevolucao) {
-      if (dataDevolucao.isBefore(dataRetirada)) return false;
-      return true;
+
+    public Cliente getCliente(){
+      return cliente;
     }
 
     @Override

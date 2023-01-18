@@ -3,6 +3,7 @@ package controller;
 import model.Agencia;
 import persistence.AgenciaEmMemoriaRepository;
 import persistence.RepositoryFactory;
+import util.ConsoleUIHelper;
 import view.AgenciaView;
 
 import java.util.List;
@@ -60,5 +61,13 @@ public class AgenciaController implements IAgenciaController{
         String agenciaBuscada = AGENCIA_VIEW.obterDadoString("Entre com o Nome ou logradouro da Agência");
         List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaBuscada);
         AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
+    }
+
+    public Agencia escolherAgenciaParaAlugar(){
+        
+        String agenciaString = ConsoleUIHelper.askSimpleInput("Qual o nome ou logradouro da agencia?");
+        List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaString);
+        AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
+        return AGENCIA_REPOSITORY.selecionarAgencia();
     }
 }

@@ -4,9 +4,19 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DataFormatada {
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
+  private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    static public LocalDateTime data(String data){
-        return LocalDateTime.parse(data, formatter);
-    }
+  public static LocalDateTime stringParaLocalDateTime(String data){
+    return LocalDateTime.parse(data, formatter);
+  }
+
+  public static String localDateTimeParaString(LocalDateTime data){
+    return data.format(formatter);
+  }
+
+  public static LocalDateTime pegarLocalDateTime(String frase){
+    String data = ConsoleUIHelper.askSimpleInput(frase);
+    return stringParaLocalDateTime(data);
+
+  }
 }

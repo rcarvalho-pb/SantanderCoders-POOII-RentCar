@@ -4,9 +4,11 @@ import model.TipoVeiculo;
 import model.Veiculo;
 import persistence.RepositoryFactory;
 import persistence.VeiculosEmMemoriaRepository;
+import util.ConsoleUIHelper;
 import view.VeiculoView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VeiculoController implements IVeiculoController{
     private final VeiculosEmMemoriaRepository VEICULOS_REPOSITORY;
@@ -64,5 +66,13 @@ public class VeiculoController implements IVeiculoController{
         String modeloASerProcurado = VEICULO_VIEW.obterDadoString("Entre com o modelo do Veículo");
         List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(modeloASerProcurado);
         VEICULO_VIEW.imprimirLista(veiculosRetornados);
+    }
+
+    public Veiculo escolherVeiculoParaAlugar(){
+        
+        String veiculoString = ConsoleUIHelper.askSimpleInput("Qual o modelo do veículo desejado?");
+        List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(veiculoString).stream().filter(x -> x.isDisponivel() == true).collect(Collectors.toList());
+        VEICULO_VIEW.imprimirLista(veiculosRetornados);
+        return VEICULOS_REPOSITORY.buscarVeiculoPelaPlaca(veiculosRetornados);
     }
 }

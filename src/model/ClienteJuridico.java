@@ -3,10 +3,8 @@ package model;
 public class ClienteJuridico extends Cliente{
 
 
-    @Override
-    public void DescontoPorQuantidadeDeDias() {
-        //10% 3 dias
-        super.DescontoPorQuantidadeDeDias();
-    }
-    
+    public ClienteJuridico(TipoCliente tipoCliente, String nome, String documento) {
+        super(tipoCliente, nome, documento);
+        //TODO Auto-generated constructor stub
+    }    
 }

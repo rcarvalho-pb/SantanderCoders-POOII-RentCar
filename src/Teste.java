@@ -1,24 +1,15 @@
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
 
-import util.Data;
+import util.DataFormatada;
 
 public class Teste {
   public static void main(String[] args) {
+    
+    LocalDateTime data1 = DataFormatada.stringParaLocalDateTime("22/07/1994 12:00");
+    
+    LocalDateTime data2 = DataFormatada.stringParaLocalDateTime("23/07/1994 12:00");
 
-    String data1 = "22/07/1994 23:00";
-    String data2 = "22/07/1995 23:00";
-    
-    LocalDateTime dataBefore = Data.stringParaLocalDateTime(data1);
-    LocalDateTime dataAfter = Data.stringParaLocalDateTime(data2);
-    
-    long daysBetween = ChronoUnit.DAYS.between(dataBefore, dataAfter);
-
-    System.out.println(daysBetween);
-    
+    System.out.println(data1.isAfter(data2));
   }
   
 }

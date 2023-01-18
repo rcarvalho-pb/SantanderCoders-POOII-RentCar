@@ -1,8 +1,11 @@
 package persistence;
 
 import model.Aluguel;
+import model.Cliente;
 
 import java.util.List;
+
+import controller.Controller;
 
 
 public class AluguelEmMemoriaRepository extends RepositorioGenericoAbstract<Aluguel> implements IAluguelRepository{
@@ -13,4 +16,11 @@ public class AluguelEmMemoriaRepository extends RepositorioGenericoAbstract<Alug
                 .filter(aluguel -> aluguel.getId().toLowerCase().contains(idAluguel.toLowerCase()))
                 .toList();
     }
+
+    public List<Aluguel> buscarPorCliente(String nomeCliente) {
+        return this.entidades.stream()
+                .filter(c -> c.getCliente().getNome().toLowerCase().contains(nomeCliente.toLowerCase()))
+                .toList();
+    }
+
 }

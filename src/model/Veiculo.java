@@ -43,6 +43,24 @@ public class Veiculo implements IEntidade {
         return tipoVeiculo;
     }
 
+    public boolean alugar(){
+        if(disponivel == false){
+            System.out.println("O carro já está alugado. ");
+            return false;
+        }
+        disponivel = !disponivel;
+        return true;
+    }
+    
+    public boolean devolver(){
+        if(disponivel == true){
+            System.out.println("O carro não foi alugado. ");
+            return false;
+        }
+        disponivel = !disponivel;
+        return true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

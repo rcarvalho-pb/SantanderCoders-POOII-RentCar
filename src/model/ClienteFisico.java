@@ -2,9 +2,8 @@ package model;
 
 public class ClienteFisico extends Cliente{
     
-    @Override
-    public void DescontoPorQuantidadeDeDias(){
-        //5% 5 dias
-    }
-    
+    public ClienteFisico(TipoCliente tipoCliente, String nome, String documento) {
+        super(tipoCliente, nome, documento);
+        //TODO Auto-generated constructor stub
+    }    
 }

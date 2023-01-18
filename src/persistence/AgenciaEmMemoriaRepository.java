@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Agencia;
+import util.ConsoleUIHelper;
 
 import java.util.List;
 
@@ -12,6 +13,16 @@ public class AgenciaEmMemoriaRepository extends RepositorioGenericoAbstract<Agen
               .filter(agencia -> agencia.getNome().concat(
                       agencia.getLogradouro()).toLowerCase().contains(nomeOuLogradouro.toLowerCase()))
                 .toList();
+    }
+
+    public Agencia selecionarAgencia(){
+      if (!entidades.isEmpty() && entidades.size() == 1){
+            return entidades.get(0);
+        }
+
+        String agencia = ConsoleUIHelper.askSimpleInput("Qual a agencia? ");
+
+        return buscarPeloId(agencia);
     }
     
 }
