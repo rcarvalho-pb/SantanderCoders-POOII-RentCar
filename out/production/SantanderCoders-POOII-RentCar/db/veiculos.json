@@ -1,17 +1,25 @@
 [
   {
-    "placa": "a",
-    "cor": "a",
-    "modelo": "a",
-    "fabricante": "a",
+    "placa": "321",
+    "cor": "amarelo",
+    "modelo": "uno",
+    "fabricante": "fiat",
     "disponivel": true,
     "tipoVeiculo": "CARRO"
   },
   {
-    "placa": "aaa1111",
-    "cor": "Preto",
-    "modelo": "Gol",
-    "fabricante": "VW",
+    "placa": "456",
+    "cor": "laranja",
+    "modelo": "corolla",
+    "fabricante": "toyota",
+    "disponivel": true,
+    "tipoVeiculo": "CARRO"
+  },
+  {
+    "placa": "654",
+    "cor": "verde",
+    "modelo": "ckawasaki",
+    "fabricante": "ninja",
     "disponivel": true,
     "tipoVeiculo": "CARRO"
   }

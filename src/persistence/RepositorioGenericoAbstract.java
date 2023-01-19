@@ -42,7 +42,7 @@ public class RepositorioGenericoAbstract<T extends IEntidade> implements Reposit
     @Override
     public T buscarPeloId(String identificador) {
         for (T entidade : this.entidades){
-            if(entidade.getId().equals(identificador))
+            if(entidade.getId().equalsIgnoreCase(identificador))
                 return entidade;
         }
         return null;
