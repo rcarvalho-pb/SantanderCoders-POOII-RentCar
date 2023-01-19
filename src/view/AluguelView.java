@@ -1,5 +1,6 @@
 package view;
 
+import model.Aluguel;
 import util.ConsoleUIHelper;
 
 public class AluguelView implements IView, IAluguelView{
@@ -50,6 +51,16 @@ public class AluguelView implements IView, IAluguelView{
 
     public static AluguelView getInstance(){
         return new AluguelView();
+    }
+
+    public static void comprovanteAluguel(Aluguel aluguel){
+        System.out.printf("""
+
+                Aluguel realizado com sucesso.
+                Protocolo: %s
+                Valor: R$ %.2f
+                
+                """, aluguel.getId(), aluguel.getValorAPagar());
     }
 
 }

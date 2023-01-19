@@ -3,6 +3,7 @@ package controller;
 import model.TipoVeiculo;
 import model.Veiculo;
 import persistence.RepositoryFactory;
+import persistence.VeiculoJsonRepository;
 import persistence.VeiculosEmMemoriaRepository;
 import util.ConsoleUIHelper;
 import view.VeiculoView;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class VeiculoController implements IVeiculoController{
-    private final VeiculosEmMemoriaRepository VEICULOS_REPOSITORY;
+    private final VeiculoJsonRepository VEICULOS_REPOSITORY;
     private final VeiculoView VEICULO_VIEW;
 
     private VeiculoController() {

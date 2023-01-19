@@ -1,7 +1,7 @@
 package controller;
 
 import model.Agencia;
-import persistence.AgenciaEmMemoriaRepository;
+import persistence.AgenciaJsonRepository;
 import persistence.RepositoryFactory;
 import util.ConsoleUIHelper;
 import view.AgenciaView;
@@ -11,7 +11,7 @@ import java.util.List;
 public class AgenciaController implements IAgenciaController{
 
     private final AgenciaView AGENCIA_VIEW;
-    private final AgenciaEmMemoriaRepository AGENCIA_REPOSITORY;
+    private final AgenciaJsonRepository AGENCIA_REPOSITORY;
 
     private AgenciaController() {
         this.AGENCIA_VIEW = AgenciaView.getInstance();

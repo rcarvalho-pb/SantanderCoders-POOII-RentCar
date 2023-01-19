@@ -35,6 +35,7 @@ public class RepositorioGenericoAbstract<T extends IEntidade> implements Reposit
         if(Controller.verificarItemDuplicado(this.entidades, entidade))
             return false;
         this.entidades.add(entidade);
+
         return true;
     }
 
