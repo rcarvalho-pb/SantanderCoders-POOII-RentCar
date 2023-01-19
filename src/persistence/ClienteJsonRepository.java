@@ -1,6 +1,5 @@
 package persistence;
 
-import controller.Controller;
 import model.Cliente;
 import util.ConsoleUIHelper;
 

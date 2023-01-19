@@ -30,5 +30,13 @@
     "fabricante": "ninja",
     "disponivel": true,
     "tipoVeiculo": "CARRO"
+  },
+  {
+    "placa": "abc",
+    "cor": "kkk",
+    "modelo": "a",
+    "fabricante": "a",
+    "disponivel": true,
+    "tipoVeiculo": "CAMINHAO"
   }
 ]

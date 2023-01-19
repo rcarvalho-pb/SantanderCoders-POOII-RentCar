@@ -1,11 +1,9 @@
 package controller;
 
-import model.Agencia;
 import model.TipoVeiculo;
 import model.Veiculo;
 import persistence.RepositoryFactory;
 import persistence.VeiculoJsonRepository;
-import persistence.VeiculosEmMemoriaRepository;
 import util.ConsoleUIHelper;
 import view.VeiculoView;
 
@@ -54,9 +52,9 @@ public class VeiculoController implements IVeiculoController{
     public void removerVeiculo() {
         List<Veiculo> veiculos = VEICULOS_REPOSITORY.getEntidades();
         VEICULO_VIEW.imprimirLista(veiculos);
-        if(!Controller.isListaVazia(veiculos)){
+        if(Controller.isListaNaoVazia(veiculos)){
             Veiculo veiculoASerAlterado = validarBuscaVeiculoPorPlaca();
-            System.out.printf("\nVeiculo %s (placa: %s) removido...\n", veiculoASerAlterado.getModelo(),
+            System.out.printf("\nVeiculo %s (placa: %s) removido...\n\n", veiculoASerAlterado.getModelo(),
                     veiculoASerAlterado.getPlaca());
             VEICULOS_REPOSITORY.remover(veiculoASerAlterado.getPlaca());
         }
@@ -65,7 +63,7 @@ public class VeiculoController implements IVeiculoController{
     public void alterarVeiculo() {
         List<Veiculo> veiculos = VEICULOS_REPOSITORY.getEntidades();
         VEICULO_VIEW.imprimirLista(veiculos);
-        if(!Controller.isListaVazia(veiculos)){
+        if(Controller.isListaNaoVazia(veiculos)){
             Veiculo veiculoASerAlterado = validarBuscaVeiculoPorPlaca();
             System.out.println("\nDigite os novos dados\n");
             VEICULOS_REPOSITORY.remover(veiculoASerAlterado.getPlaca());
@@ -83,7 +81,7 @@ public class VeiculoController implements IVeiculoController{
     public Veiculo escolherVeiculoParaAlugar(){
         
         String veiculoString = ConsoleUIHelper.askSimpleInput("Qual o modelo do veículo desejado?");
-        List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(veiculoString).stream().filter(x -> x.isDisponivel() == true).collect(Collectors.toList());
+        List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(veiculoString).stream().filter(Veiculo::isDisponivel).collect(Collectors.toList());
         VEICULO_VIEW.imprimirLista(veiculosRetornados);
         return VEICULOS_REPOSITORY.buscarVeiculoPelaPlaca(veiculosRetornados);
     }

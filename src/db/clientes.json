@@ -1,6 +1,16 @@
 [
   {
     "tipoCliente": "PESSOA_FISICA",
+    "nome": "Ramon",
+    "documento": "123456"
+  },
+  {
+    "tipoCliente": "PESSOA_FISICA",
+    "nome": "Pamella",
+    "documento": "321123"
+  },
+  {
+    "tipoCliente": "PESSOA_FISICA",
     "nome": "Paulo",
     "documento": "991548"
   },
@@ -8,10 +18,5 @@
     "tipoCliente": "PESSOA_FISICA",
     "nome": "Raruo",
     "documento": "666666"
-  },
-  {
-    "tipoCliente": "PESSOA_JURIDICA",
-    "nome": "Ramon",
-    "documento": "12345566"
   }
 ]

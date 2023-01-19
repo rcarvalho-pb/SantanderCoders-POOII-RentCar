@@ -21,7 +21,7 @@ public class ViewGenerico implements IView{
 
         String[] enumNames = obterArrayNamesEnum(enumSet);
 
-        int opcaoEnum = ConsoleUIHelper.printChooseOption(mensagem, enumNames);
+        ConsoleUIHelper.printChooseOption(mensagem, enumNames);
         int opcoes = ConsoleUIHelper.chooseOption(enumSet.size());
 
         for (E elemento : enumSet){

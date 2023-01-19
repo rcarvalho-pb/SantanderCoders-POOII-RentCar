@@ -24,7 +24,7 @@ public class Agencia implements IEntidade {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agencia agencia = (Agencia) o;
-        return nome.equals(agencia.nome);
+        return nome.equalsIgnoreCase(agencia.nome);
     }
 
     @Override

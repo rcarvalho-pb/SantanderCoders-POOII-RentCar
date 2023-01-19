@@ -98,7 +98,7 @@ public class Aluguel implements IEntidade {
 
     @Override
     public String getDadosCabecalho() {
-        return String.format("%-20s %-50s %-20s",
+        return String.format("%-15s %-40s %-15s",
                 "Placa", "Agência", "Aluguel");
     }
 

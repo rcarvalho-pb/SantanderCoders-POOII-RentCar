@@ -12,23 +12,6 @@ public class ConsoleUIHelper {
         return new Scanner(System.in).nextLine().trim();
     }
 
-    public static int askID(List<?> lista) {
-        if (lista.isEmpty())
-            return -1;
-        Scanner sc = new Scanner(System.in);
-        System.out.printf("%s%n# : ", "Digite o Id");
-        int choose;
-        do {
-            try {
-                choose = sc.nextInt();
-            } catch (InputMismatchException e) {
-                choose = -9;
-                sc.nextLine();
-            }
-        } while (choose < 0 || choose >= lista.size());
-        return choose;
-    }
-
     public static int printChooseOption(String message, String... options){
         System.out.printf("%s%n# : ", message);
         for (int i = 0; i < options.length; i++) {
@@ -43,12 +26,14 @@ public class ConsoleUIHelper {
         do {
             try {
                 choose = sc.nextInt();
+                if (choose < 0 || choose >= length)
+                    throw new InputMismatchException();
             } catch (InputMismatchException e) {
                 choose = -9;
                 sc.nextLine();
-                System.out.println("\nOpção inválida\n");
+                System.out.print("\nOpção inválida! Digite novamente\n#: ");
             }
-        } while (choose < 0 || choose >= length);
+        } while (choose < 0);
         return choose;
     }
 
