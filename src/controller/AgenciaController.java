@@ -34,7 +34,7 @@ public class AgenciaController implements IAgenciaController{
         System.out.println("\nAgência duplicada. Não foi cadastrado\n");
     }
 
-    private Agencia validarBuscaVeiculoPorPlaca(){
+    private Agencia validarBuscaAgenciaPorNome(){
         Agencia agencia;
         do{
             String nome = AGENCIA_VIEW.obterDadoString("Entre com o Nome da Agência");
@@ -42,13 +42,22 @@ public class AgenciaController implements IAgenciaController{
         }while (agencia == null);
         return agencia;
     }
-
+    @Override
+    public void removerAgencia() {
+        List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
+        AGENCIA_VIEW.imprimirLista(agencias);
+        if (!Controller.isListaVazia(agencias)) {
+            Agencia agenciaASerAlterada = validarBuscaAgenciaPorNome();
+            System.out.printf("\nAgencia %s removida...\n", agenciaASerAlterada.getNome());
+            AGENCIA_REPOSITORY.remover(agenciaASerAlterada.getNome());
+        }
+    }
     @Override
     public void alterarAgencia() {
         List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
         AGENCIA_VIEW.imprimirLista(agencias);
         if(!Controller.isListaVazia(agencias)){
-            Agencia agenciaASerAlterada = validarBuscaVeiculoPorPlaca();
+            Agencia agenciaASerAlterada = validarBuscaAgenciaPorNome();
             System.out.println("\nDigite os novos dados\n");
             AGENCIA_REPOSITORY.remover(agenciaASerAlterada.getNome());
             cadastrarAgencia();

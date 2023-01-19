@@ -1,5 +1,6 @@
 package controller;
 
+import model.Agencia;
 import model.TipoVeiculo;
 import model.Veiculo;
 import persistence.RepositoryFactory;
@@ -49,7 +50,17 @@ public class VeiculoController implements IVeiculoController{
         }while (veiculo == null);
         return veiculo;
     }
-
+    @Override
+    public void removerVeiculo() {
+        List<Veiculo> veiculos = VEICULOS_REPOSITORY.getEntidades();
+        VEICULO_VIEW.imprimirLista(veiculos);
+        if(!Controller.isListaVazia(veiculos)){
+            Veiculo veiculoASerAlterado = validarBuscaVeiculoPorPlaca();
+            System.out.printf("\nVeiculo %s (placa: %s) removido...\n", veiculoASerAlterado.getModelo(),
+                    veiculoASerAlterado.getPlaca());
+            VEICULOS_REPOSITORY.remover(veiculoASerAlterado.getPlaca());
+        }
+    }
     @Override
     public void alterarVeiculo() {
         List<Veiculo> veiculos = VEICULOS_REPOSITORY.getEntidades();
