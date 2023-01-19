@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
+import util.DataFormatada;
+
 public class Aluguel implements IEntidade {
-    private LocalDateTime dataRetirada;
-    private LocalDateTime dataDevolucao;
+    private String dataRetirada;
+    private String dataDevolucao;
     private Veiculo veiculo;
     private Agencia agenciaRetirada;
     private Agencia agenciaDevolucao;
@@ -14,15 +16,15 @@ public class Aluguel implements IEntidade {
     private UUID id;
     
 
-    public Aluguel(LocalDateTime dataRetirada,
-    LocalDateTime dataDevolucao, Veiculo veiculo,
+    public Aluguel(String dataRetirada,
+    String dataDevolucao, Veiculo veiculo,
     Agencia agenciaRetirada, Cliente cliente) {
       if(!dataRetiradaValida(dataRetirada)){
         System.out.println("Data inválida. Não alugamos carro no passado.");
         return;
       }
 
-      if (dataDevolucao.isBefore(dataRetirada)){
+      if (DataFormatada.stringParaLocalDateTime(dataDevolucao).isBefore(DataFormatada.stringParaLocalDateTime(dataRetirada))){
         System.out.println("Data inválida. Não é possível devolver o carro antes de alugar. ");
         return;
       }
@@ -38,10 +40,10 @@ public class Aluguel implements IEntidade {
     }
 
     public Long quantidadeDeDiasAlugado(){
-      return ChronoUnit.DAYS.between(dataRetirada, dataDevolucao);
+      return ChronoUnit.DAYS.between(DataFormatada.stringParaLocalDateTime(dataRetirada), DataFormatada.stringParaLocalDateTime(dataDevolucao));
     }    
     
-    public LocalDateTime getDataAluguel() {
+    public String getDataAluguel() {
       return dataRetirada;
     }
 
@@ -50,8 +52,8 @@ public class Aluguel implements IEntidade {
 
     }
     
-    public void alterarDataDevolução(LocalDateTime novaDataDevolucao) {
-      if(novaDataDevolucao.isBefore(dataRetirada)){
+    public void alterarDataDevolução(String novaDataDevolucao) {
+      if(DataFormatada.stringParaLocalDateTime(novaDataDevolucao).isBefore(DataFormatada.stringParaLocalDateTime(dataRetirada))){
           System.out.println("Data inválida. Data anterior a data de retirada.");
           return;
         }
@@ -59,8 +61,8 @@ public class Aluguel implements IEntidade {
         dataDevolucao = novaDataDevolucao;
     }
 
-    private Boolean dataRetiradaValida(LocalDateTime dataRetirada){
-      if(dataRetirada.isBefore(LocalDateTime.now())) return false;
+    private Boolean dataRetiradaValida(String dataRetirada){
+      if(DataFormatada.stringParaLocalDateTime(dataRetirada).isBefore(LocalDateTime.now())) return false;
       return true;
     }
 

@@ -1,6 +1,5 @@
 package controller;
 
-import java.time.LocalDateTime;
 
 import model.Agencia;
 import model.Aluguel;
@@ -36,13 +35,14 @@ public void alugar() {
   Veiculo veiculo = VeiculoController.getInstancia().escolherVeiculoParaAlugar();
   Agencia agencia = AgenciaController.getInstancia().escolherAgenciaParaAlugar();
 
-  LocalDateTime dataRetirada = DataFormatada.pegarLocalDateTime("Informe a data de retirada: (dd/mm/aaaa hh:mm)");
+  String dataRetirada = ConsoleUIHelper.askSimpleInput("Informe a data de retirada: (dd/mm/aaaa hh:mm)");
 
-  LocalDateTime dataDevolucao = DataFormatada.pegarLocalDateTime("Informe a data de devolução: (dd/mm/aaaa hh:mm)");
+  String dataDevolucao = ConsoleUIHelper.askSimpleInput("Informe a data de devolução: (dd/mm/aaaa hh:mm)");
 
   Aluguel aluguel = new Aluguel(dataRetirada, dataDevolucao, veiculo, agencia, cliente);
   if(ALUGUEL_REPOSITORY.salvar(aluguel)){
             System.out.printf("\nAluguel Efetuado com sucesso. Protocolo: %s\n\n", aluguel.getId());
+            veiculo.alugar();
             return;
         }
         System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");

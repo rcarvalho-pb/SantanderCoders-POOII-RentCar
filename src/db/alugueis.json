@@ -1,0 +1,24 @@
+[
+  {
+    "dataRetirada": "19/01/2023 12:00",
+    "dataDevolucao": "20/01/2023 12:00",
+    "veiculo": {
+      "placa": "123",
+      "cor": "ver",
+      "modelo": "uno",
+      "fabricante": "fiat",
+      "disponivel": true,
+      "tipoVeiculo": "CARRO"
+    },
+    "agenciaRetirada": {
+      "nome": "ag1",
+      "logradouro": "rua t"
+    },
+    "cliente": {
+      "tipoCliente": "PESSOA_FISICA",
+      "nome": "ailton",
+      "documento": "123456"
+    },
+    "id": "d93438d9-03b8-4405-a2a0-5c976eb446f0"
+  }
+]

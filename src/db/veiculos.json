@@ -1,0 +1,10 @@
+[
+  {
+    "placa": "123",
+    "cor": "ver",
+    "modelo": "uno",
+    "fabricante": "fiat",
+    "disponivel": true,
+    "tipoVeiculo": "CARRO"
+  }
+]

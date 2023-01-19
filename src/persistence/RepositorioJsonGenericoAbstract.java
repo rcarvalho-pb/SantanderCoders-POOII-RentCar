@@ -13,7 +13,7 @@ public class RepositorioJsonGenericoAbstract<T extends IEntidade> extends Reposi
   private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
   public RepositorioJsonGenericoAbstract(String pathOfFile) {
-    this.pathOfFile  = "db/"+pathOfFile+".json";
+    this.pathOfFile  = "src/db/"+pathOfFile+".json";
   }
 
   @Override
