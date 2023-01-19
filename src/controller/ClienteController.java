@@ -1,9 +1,7 @@
 package controller;
 
-import model.Agencia;
 import model.Cliente;
 import model.TipoCliente;
-import persistence.ClienteEmMemoriaRepository;
 import persistence.ClienteJsonRepository;
 import persistence.RepositoryFactory;
 import util.ConsoleUIHelper;
@@ -48,9 +46,9 @@ public class ClienteController implements IClienteController{
     public void removerCliente() {
         List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
         CLIENTE_VIEW.imprimirLista(clientes);
-        if (!Controller.isListaVazia(clientes)) {
+        if (Controller.isListaNaoVazia(clientes)) {
             Cliente clienteASerAlterado = validarBuscaClientePorDocumento();
-            System.out.printf("\nCliente %s (documento:%s) removido...\n", clienteASerAlterado.getNome(),
+            System.out.printf("\nCliente %s (documento:%s) removido...\n\n", clienteASerAlterado.getNome(),
                     clienteASerAlterado.getDocumento());
             CLIENTE_REPOSITORY.remover(clienteASerAlterado.getDocumento());
         }
@@ -59,7 +57,7 @@ public class ClienteController implements IClienteController{
     public void alterarCliente() {
         List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
         CLIENTE_VIEW.imprimirLista(clientes);
-        if(!Controller.isListaVazia(clientes)){
+        if(Controller.isListaNaoVazia(clientes)){
             Cliente clienteASerAlterado = validarBuscaClientePorDocumento();
             System.out.println("\nDigite os novos dados\n");
             CLIENTE_REPOSITORY.remover(clienteASerAlterado.getDocumento());

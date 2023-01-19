@@ -23,16 +23,8 @@ public class Veiculo implements IEntidade {
         return placa;
     }
 
-    public String getCor() {
-        return cor;
-    }
-
     public String getModelo() {
         return modelo;
-    }
-
-    public String getFabricante() {
-        return fabricante;
     }
 
     public boolean isDisponivel() {
@@ -78,7 +70,7 @@ public class Veiculo implements IEntidade {
     public String toString() {
         return String.format("%-10s %-15s %-13s %-13s %-10s %-10s",
                 this.placa, this.tipoVeiculo, this.modelo,
-                this.fabricante, this.cor, this.disponivel);
+                this.fabricante, this.cor, this.disponivel ? "Sim" : "Não");
     }
 
     @Override

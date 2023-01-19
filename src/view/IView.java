@@ -61,8 +61,20 @@ public interface IView {
         while (true){
             int paginaTeste = paginaAtual;
             switch (ConsoleUIHelper.chooseOption(opcoes)){
-                case 0 -> paginaAtual = paginaAtual == numeroPaginas ? paginaAtual : paginaAtual + 1;
-                case 1 -> paginaAtual = paginaAtual == 1 ? paginaAtual : paginaAtual - 1;
+                case 0 -> {
+                    if (paginaAtual == numeroPaginas){
+                        System.out.print("\nNão há mais páginas. Digite novamente\n#: ");
+                        break;
+                    }
+                    paginaAtual++;
+                }
+                case 1 -> {
+                    if (paginaAtual == 1){
+                        System.out.print("\nNão há mais páginas. Digite novamente\n#: ");
+                        break;
+                    }
+                    paginaAtual--;
+                }
                 case 2 -> paginaAtual = -1;
             }
             if(paginaTeste != paginaAtual)

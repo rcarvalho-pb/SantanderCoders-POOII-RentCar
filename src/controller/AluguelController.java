@@ -7,13 +7,8 @@ import model.Cliente;
 import model.Veiculo;
 import persistence.RepositorioGenericoAbstract;
 import persistence.RepositoryFactory;
-import persistence.VeiculosEmMemoriaRepository;
 import util.ConsoleUIHelper;
-import util.DataFormatada;
-import view.AgenciaView;
 import view.AluguelView;
-import view.VeiculoView;
-import view.ViewGenerico;
 
 public class AluguelController {
 

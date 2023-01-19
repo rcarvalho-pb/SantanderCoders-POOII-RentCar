@@ -1,12 +1,7 @@
 package persistence;
 
 import model.Aluguel;
-import model.Cliente;
-
 import java.util.List;
-
-import controller.Controller;
-
 
 public class AluguelEmMemoriaRepository extends RepositorioGenericoAbstract<Aluguel> implements IAluguelRepository{
 

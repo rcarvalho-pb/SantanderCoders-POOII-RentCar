@@ -7,7 +7,6 @@ public class Cliente implements IEntidade{
     private String nome;
     private String documento;
 
-
     public Cliente(TipoCliente tipoCliente, String nome, String documento) {
         this.tipoCliente = tipoCliente;
         this.nome = nome;
@@ -16,10 +15,6 @@ public class Cliente implements IEntidade{
 
     public TipoCliente getTipoCliente() {
         return tipoCliente;
-    }
-
-    public void setTipoCliente(TipoCliente tipoCliente) {
-        this.tipoCliente = tipoCliente;
     }
 
     public String getNome() {
@@ -34,9 +29,6 @@ public class Cliente implements IEntidade{
         return documento;
     }
 
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
     @Override
     public String toString() {
         return String.format("%-20s %-20s %-20s",

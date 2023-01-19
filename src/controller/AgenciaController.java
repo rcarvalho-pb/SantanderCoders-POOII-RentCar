@@ -46,9 +46,9 @@ public class AgenciaController implements IAgenciaController{
     public void removerAgencia() {
         List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
         AGENCIA_VIEW.imprimirLista(agencias);
-        if (!Controller.isListaVazia(agencias)) {
+        if (Controller.isListaNaoVazia(agencias)) {
             Agencia agenciaASerAlterada = validarBuscaAgenciaPorNome();
-            System.out.printf("\nAgencia %s removida...\n", agenciaASerAlterada.getNome());
+            System.out.printf("\nAgencia %s removida...\n\n", agenciaASerAlterada.getNome());
             AGENCIA_REPOSITORY.remover(agenciaASerAlterada.getNome());
         }
     }
@@ -56,7 +56,7 @@ public class AgenciaController implements IAgenciaController{
     public void alterarAgencia() {
         List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
         AGENCIA_VIEW.imprimirLista(agencias);
-        if(!Controller.isListaVazia(agencias)){
+        if(Controller.isListaNaoVazia(agencias)){
             Agencia agenciaASerAlterada = validarBuscaAgenciaPorNome();
             System.out.println("\nDigite os novos dados\n");
             AGENCIA_REPOSITORY.remover(agenciaASerAlterada.getNome());
