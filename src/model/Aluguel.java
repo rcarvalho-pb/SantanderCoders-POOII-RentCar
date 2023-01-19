@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
@@ -14,6 +15,7 @@ public class Aluguel implements IEntidade {
     private Agencia agenciaDevolucao;
     private Cliente cliente;
     private UUID id;
+    private BigDecimal valorAPagar;
     
 
     public Aluguel(String dataRetirada,
@@ -37,10 +39,30 @@ public class Aluguel implements IEntidade {
       this.cliente = cliente;
       this.agenciaDevolucao = null;
 
+      valorAPagar = valorAPagarPorCliente(cliente, veiculo, dataRetirada, dataDevolucao);
     }
 
-    public Long quantidadeDeDiasAlugado(){
-      return ChronoUnit.DAYS.between(DataFormatada.stringParaLocalDateTime(dataRetirada), DataFormatada.stringParaLocalDateTime(dataDevolucao));
+    public BigDecimal valorAPagarPorCliente(Cliente cliente, Veiculo veiculo, String dataRetirada, String dataDevolucao){
+      double desconto = cliente.getTipoCliente().getDesconto();
+      BigDecimal diaria = veiculo.getTipoVeiculo().getValorAluguel();
+      int quantidadeDeDiasAlugado = quantidadeDeDiasAlugado(dataRetirada, dataDevolucao);
+
+      if(cliente.getTipoCliente().equals(TipoCliente.PESSOA_FISICA) && quantidadeDeDiasAlugado > 5){
+        return diaria.multiply(BigDecimal.valueOf(quantidadeDeDiasAlugado*desconto));
+      }
+      if(cliente.getTipoCliente().equals(TipoCliente.PESSOA_JURIDICA) && quantidadeDeDiasAlugado > 3){
+        return diaria.multiply(BigDecimal.valueOf(quantidadeDeDiasAlugado*desconto));
+      }
+      return diaria.multiply(BigDecimal.valueOf(quantidadeDeDiasAlugado));
+
+    }
+
+    public BigDecimal getValorAPagar(){
+      return valorAPagar;
+    }
+
+    public int quantidadeDeDiasAlugado(String dataRetirada, String dataDevolucao){
+      return (int)Math.ceil((double)ChronoUnit.MINUTES.between(DataFormatada.stringParaLocalDateTime(dataRetirada), DataFormatada.stringParaLocalDateTime(dataDevolucao))/(double)(24*60));
     }    
     
     public String getDataAluguel() {
@@ -50,6 +72,10 @@ public class Aluguel implements IEntidade {
     public void setAgenciaDevolucao(Agencia agenciaDevolucao){
       this.agenciaDevolucao = agenciaDevolucao;
 
+    }
+
+    public Veiculo getVeiculo(){
+      return veiculo;
     }
     
     public void alterarDataDevolução(String novaDataDevolucao) {

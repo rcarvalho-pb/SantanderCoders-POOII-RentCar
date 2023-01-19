@@ -1,24 +1,21 @@
 [
   {
-    "dataRetirada": "19/01/2023 12:00",
-    "dataDevolucao": "20/01/2023 12:00",
+    "dataRetirada": "23/06/2023 12:00",
+    "dataDevolucao": "29/06/2023 12:01",
     "veiculo": {
       "placa": "123",
-      "cor": "ver",
+      "cor": "vermelho",
       "modelo": "uno",
       "fabricante": "fiat",
-      "disponivel": true,
+      "disponivel": false,
       "tipoVeiculo": "CARRO"
-    },
-    "agenciaRetirada": {
-      "nome": "ag1",
-      "logradouro": "rua t"
     },
     "cliente": {
       "tipoCliente": "PESSOA_FISICA",
-      "nome": "ailton",
+      "nome": "Ramon",
       "documento": "123456"
     },
-    "id": "d93438d9-03b8-4405-a2a0-5c976eb446f0"
+    "id": "0749b0bf-28a0-4d24-b236-e663c8a540d3",
+    "valorAPagar": 997.499999999999925000
   }
 ]

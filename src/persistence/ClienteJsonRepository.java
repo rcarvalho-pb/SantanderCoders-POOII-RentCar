@@ -24,14 +24,14 @@ public class ClienteJsonRepository extends RepositorioJsonGenericoAbstract<Clien
                 .filter(cliente -> cliente.getNome().toLowerCase().contains(nome.toLowerCase()))
                 .toList();
     }
-
-    public boolean salvar(Cliente cliente) {
-        if(Controller.verificarItemDuplicado(this.entidades, cliente)) {
-            return false;
-        }
-        this.entidades.add(cliente);
-        return true;
-    }
+    
+    // public boolean salvar(Cliente cliente) {
+    //     if(Controller.verificarItemDuplicado(this.entidades, cliente)) {
+    //         return false;
+    //     }
+    //     this.entidades.add(cliente);
+    //     return true;
+    // }
 
     public Cliente selecionarCliente(){
       if (!entidades.isEmpty() && entidades.size() == 1){

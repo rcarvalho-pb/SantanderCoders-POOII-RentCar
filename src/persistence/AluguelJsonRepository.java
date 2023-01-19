@@ -2,6 +2,7 @@ package persistence;
 
 import model.Aluguel;
 
+import java.io.FileWriter;
 import java.util.List;
 
 
@@ -22,6 +23,12 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
         return this.entidades.stream()
                 .filter(c -> c.getCliente().getNome().toLowerCase().contains(nomeCliente.toLowerCase()))
                 .toList();
+    }
+
+    @Override
+    public boolean salvar(Aluguel entidade){
+        entidade.getVeiculo().alugar();
+        return super.salvar(entidade);
     }
 
 }
