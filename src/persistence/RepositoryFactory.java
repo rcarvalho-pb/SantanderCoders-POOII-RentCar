@@ -2,8 +2,8 @@ package persistence;
 
 public class RepositoryFactory {
 
-    public static final VeiculosEmMemoriaRepository VEICULOS_REPOSITORY = new VeiculosEmMemoriaRepository();
-    public static final AgenciaJsonRepository AGENCIA_REPOSITORY = new AgenciaJsonRepository();
-    public static final ClienteEmMemoriaRepository CLIENTE_REPOSITORY = new ClienteEmMemoriaRepository();
-    public static final AluguelEmMemoriaRepository ALUGUEL_REPOSITORY = new AluguelEmMemoriaRepository();
+    public static final VeiculoJsonRepository VEICULOS_REPOSITORY = new VeiculoJsonRepository("veiculos");
+    public static final AgenciaJsonRepository AGENCIA_REPOSITORY = new AgenciaJsonRepository("agencias");
+    public static final ClienteJsonRepository CLIENTE_REPOSITORY = new ClienteJsonRepository("clientes");
+    public static final AluguelJsonRepository ALUGUEL_REPOSITORY = new AluguelJsonRepository("alugueis");
 }

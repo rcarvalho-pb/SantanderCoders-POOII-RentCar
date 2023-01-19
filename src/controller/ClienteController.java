@@ -3,6 +3,7 @@ package controller;
 import model.Cliente;
 import model.TipoCliente;
 import persistence.ClienteEmMemoriaRepository;
+import persistence.ClienteJsonRepository;
 import persistence.RepositoryFactory;
 import util.ConsoleUIHelper;
 import view.ClienteView;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class ClienteController implements IClienteController{
     private final ClienteView CLIENTE_VIEW;
-    private final ClienteEmMemoriaRepository CLIENTE_REPOSITORY;
+    private final ClienteJsonRepository CLIENTE_REPOSITORY;
 
     public ClienteController() {
         CLIENTE_VIEW = ClienteView.getInstance();
