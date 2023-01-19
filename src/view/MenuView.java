@@ -17,12 +17,15 @@ public class MenuView {
     private static int mostarOpcoesMenu(){
         return ConsoleUIHelper.printChooseOption("Escolha uma opção",
                 "Cadastrar Veículos",
+                "Remover Veículos",
                 "Alterar um veículo cadastrado",
                 "Buscar um veículo por parte do nome",
                 "Cadastrar agência onde o veículo será alugado/devolvido",
+                "Remover agências",
                 "Alterar agência onde o veículo será alugado/devolvido;",
                 "Buscar uma agência por parte do nome ou logradouro do endereço",
                 "Cadastrar o cliente (Pessoa Física/Jurídica)",
+                "Remover o cliente (Pessoa Física/Jurídica)",
                 "Alterar o cliente (Pessoa Física/Jurídica)",
                 "Buscar o cliente por documento",
                 "Alugar um Veículo para Pessoa Física",
@@ -30,7 +33,8 @@ public class MenuView {
                 "Devolver um Veículo para Pessoa Física",
                 "Devolver um Veículo para Pessoa Jurídica",
                 "Gerar comprovante de aluguel",
-                "Gerar comprovante de devolução");
+                "Gerar comprovante de devolução",
+                "Sair da aplicação");
 
     }
 

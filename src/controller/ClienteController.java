@@ -1,5 +1,6 @@
 package controller;
 
+import model.Agencia;
 import model.Cliente;
 import model.TipoCliente;
 import persistence.ClienteEmMemoriaRepository;
@@ -42,6 +43,17 @@ public class ClienteController implements IClienteController{
             cliente = CLIENTE_REPOSITORY.buscarPeloId(documento);
         }while (cliente == null);
         return cliente;
+    }
+    @Override
+    public void removerCliente() {
+        List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
+        CLIENTE_VIEW.imprimirLista(clientes);
+        if (!Controller.isListaVazia(clientes)) {
+            Cliente clienteASerAlterado = validarBuscaClientePorDocumento();
+            System.out.printf("\nCliente %s (documento:%s) removido...\n", clienteASerAlterado.getNome(),
+                    clienteASerAlterado.getDocumento());
+            CLIENTE_REPOSITORY.remover(clienteASerAlterado.getDocumento());
+        }
     }
     @Override
     public void alterarCliente() {
