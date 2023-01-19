@@ -1,14 +1,32 @@
 package persistence;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import model.Agencia;
 import model.Veiculo;
 import util.ConsoleUIHelper;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class VeiculoJsonRepository extends RepositorioJsonGenericoAbstract<Veiculo> implements IVeiculoRepository{
 
     public VeiculoJsonRepository(String pathOfFile) {
         super(pathOfFile);
+    }
+
+    @Override
+    public void lerJson() {
+        try (FileReader reader = new FileReader(pathOfFile)) {
+            Type listType = new TypeToken<List<Veiculo>>() {}.getType();
+            List<Veiculo> lista = new Gson().fromJson(reader, listType);
+            this.getEntidades().addAll(lista);
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,9 +1,15 @@
 package persistence;
 
+import com.google.gson.reflect.TypeToken;
 import model.Agencia;
 import util.ConsoleUIHelper;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
+
+import com.google.gson.Gson;
 
 public class AgenciaJsonRepository extends RepositorioJsonGenericoAbstract<Agencia> implements IAgenciaRepository{
 
@@ -27,6 +33,18 @@ public class AgenciaJsonRepository extends RepositorioJsonGenericoAbstract<Agenc
         String agencia = ConsoleUIHelper.askSimpleInput("Qual a agencia? ");
 
         return buscarPeloId(agencia);
+    }
+
+    @Override
+    public void lerJson(){
+      try (FileReader reader = new FileReader(pathOfFile)) {
+      Type listType = new TypeToken<List<Agencia>>() {}.getType();
+      List<Agencia> lista = new Gson().fromJson(reader, listType);
+      this.getEntidades().addAll(lista);
+
+      }catch (IOException e){
+        e.printStackTrace();
+      }
     }
     
 }
