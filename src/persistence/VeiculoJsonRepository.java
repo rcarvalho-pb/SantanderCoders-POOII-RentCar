@@ -8,6 +8,8 @@ import util.ConsoleUIHelper;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class VeiculoJsonRepository extends RepositorioJsonGenericoAbstract<Veiculo> implements IVeiculoRepository{
@@ -18,14 +20,16 @@ public class VeiculoJsonRepository extends RepositorioJsonGenericoAbstract<Veicu
 
     @Override
     public void lerJson() {
-        try (FileReader reader = new FileReader(pathOfFile)) {
-            Type listType = new TypeToken<List<Veiculo>>() {}.getType();
-            List<Veiculo> lista = new Gson().fromJson(reader, listType);
+        if(Files.exists(Paths.get(this.pathOfFile))) {
+            try (FileReader reader = new FileReader(pathOfFile)) {
+                Type listType = new TypeToken<List<Veiculo>>() {}.getType();
+                List<Veiculo> lista = new Gson().fromJson(reader, listType);
 
-            this.entidades.addAll(lista);
+                this.entidades.addAll(lista);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     @Override

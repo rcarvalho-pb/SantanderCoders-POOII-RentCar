@@ -7,6 +7,8 @@ import model.Aluguel;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 
@@ -19,14 +21,16 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
 
     @Override
     public void lerJson() {
-        try (FileReader reader = new FileReader(pathOfFile)) {
-            Type listType = new TypeToken<List<Aluguel>>() {}.getType();
-            List<Aluguel> lista = new Gson().fromJson(reader, listType);
+        if(Files.exists(Paths.get(this.pathOfFile))) {
+            try (FileReader reader = new FileReader(pathOfFile)) {
+                Type listType = new TypeToken<List<Aluguel>>() {}.getType();
+                List<Aluguel> lista = new Gson().fromJson(reader, listType);
 
-            this.entidades.addAll(lista);
+                this.entidades.addAll(lista);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
