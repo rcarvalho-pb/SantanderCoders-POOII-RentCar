@@ -73,23 +73,21 @@ public class AluguelController {
     ALUGUEL_VIEW.imprimirLista(alugueis);
     if(!Controller.isListaVazia(alugueis)){
         Aluguel aluguel = validarBuscaAluguelPorId();
+        Veiculo veiculoAlugado = aluguel.getVeiculo();
         aluguel.encerrarAluguel();
-
+        Veiculo veiculo = RepositoryFactory.VEICULOS_REPOSITORY.buscarPeloId(veiculoAlugado.getPlaca());
+        veiculo.setDisponivel(true);
+        RepositoryFactory.VEICULOS_REPOSITORY.salvar(veiculo);
         if (ALUGUEL_REPOSITORY.removerAluguel(aluguel)) {
           if(ALUGUEL_REPOSITORY.salvar(aluguel)){
-            ALUGUEL_VIEW.imprimirComprovante(aluguel, "devolucao");
+            ALUGUEL_VIEW.imprimirComprovante(aluguel, "devolução");
             return;
           }
-
           System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");
-
           return;
         }
-
-        System.out.println("Aluguel não encontrado. ");       
-      
-    } 
-    
+        System.out.println("\nAluguel não encontrado.\n");
+    }
   }
 
   public void gerarComprovanteAluguel() {

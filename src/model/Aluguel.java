@@ -93,12 +93,12 @@ public class Aluguel implements IEntidade {
 
 
     public boolean encerrarAluguel(){
-      if(devolvido == false) {
+      if(!devolvido) {
         devolvido = true;
-        System.out.println("Devolução realizada com sucesso. ");
+        System.out.println("\nDevolução realizada com sucesso.\n");
         return true;
       }
-      System.out.println("O aluguel já foi devolvido. ");
+      System.out.println("\nO aluguel já foi devolvido.\n");
       return false;
     }
 
