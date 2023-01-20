@@ -16,6 +16,7 @@ public class Aluguel implements IEntidade {
     private Cliente cliente;
     private UUID id;
     private BigDecimal valorAPagar;
+    private boolean devolvido;
     
 
     public Aluguel(String dataRetirada,
@@ -38,6 +39,7 @@ public class Aluguel implements IEntidade {
       this.agenciaRetirada = agenciaRetirada;
       this.cliente = cliente;
       this.agenciaDevolucao = null;
+      this.devolvido = false;
 
       valorAPagar = valorAPagarPorCliente(cliente, veiculo, dataRetirada, dataDevolucao);
     }
@@ -65,8 +67,20 @@ public class Aluguel implements IEntidade {
       return (int)Math.ceil((double)ChronoUnit.MINUTES.between(DataFormatada.stringParaLocalDateTime(dataRetirada), DataFormatada.stringParaLocalDateTime(dataDevolucao))/(double)(24*60));
     }    
     
-    public String getDataAluguel() {
+    public String getDataRetirada() {
       return dataRetirada;
+    }
+
+    public String getDataDevolucao() {
+      return dataDevolucao;
+    }
+
+    public Agencia getAgenciaRetirada(){
+      return agenciaRetirada;
+    }
+
+    public Agencia getAgenciaDevolucao(){
+      return agenciaDevolucao;
     }
 
     public void setAgenciaDevolucao(Agencia agenciaDevolucao){
@@ -90,6 +104,20 @@ public class Aluguel implements IEntidade {
     private Boolean dataRetiradaValida(String dataRetirada){
       if(DataFormatada.stringParaLocalDateTime(dataRetirada).isBefore(LocalDateTime.now())) return false;
       return true;
+    }
+
+    public boolean encerrarAluguel(){
+      if(devolvido == false) {
+        devolvido = true;
+        System.out.println("Devolução realizada com sucesso. ");
+        return true;
+      }
+      System.out.println("O aluguel já foi devolvido. ");
+      return false;
+    }
+
+    public boolean getDevolvido(){
+      return devolvido;
     }
 
     public Cliente getCliente(){

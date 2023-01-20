@@ -9,7 +9,7 @@ import view.ClienteView;
 
 import java.util.List;
 
-public class ClienteController implements IClienteController{
+public class ClienteController {
     private final ClienteView CLIENTE_VIEW;
     private final ClienteJsonRepository CLIENTE_REPOSITORY;
 
@@ -22,7 +22,6 @@ public class ClienteController implements IClienteController{
         return new ClienteController();
     }
 
-    @Override
     public void cadastrarCliente() {
         String nome = CLIENTE_VIEW.obterDadoString("Entre com o nome do Cliente");
         TipoCliente tipoCliente = CLIENTE_VIEW.obterDadoEnum("Tipo de Cliente", TipoCliente.class);
@@ -42,7 +41,7 @@ public class ClienteController implements IClienteController{
         }while (cliente == null);
         return cliente;
     }
-    @Override
+    
     public void removerCliente() {
         List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
         CLIENTE_VIEW.imprimirLista(clientes);
@@ -53,7 +52,7 @@ public class ClienteController implements IClienteController{
             CLIENTE_REPOSITORY.remover(clienteASerAlterado.getDocumento());
         }
     }
-    @Override
+    
     public void alterarCliente() {
         List<Cliente> clientes = CLIENTE_REPOSITORY.getEntidades();
         CLIENTE_VIEW.imprimirLista(clientes);
@@ -65,7 +64,7 @@ public class ClienteController implements IClienteController{
         }
     }
 
-    @Override
+    
     public void buscarCliente() {
             String clienteBuscado = CLIENTE_VIEW.obterDadoString("Entre com o Documento do cliente");
             List<Cliente> clientesRetornados = CLIENTE_REPOSITORY.buscarPorDocumento(clienteBuscado);

@@ -8,7 +8,7 @@ import view.AgenciaView;
 
 import java.util.List;
 
-public class AgenciaController implements IAgenciaController{
+public class AgenciaController {
 
     private final AgenciaView AGENCIA_VIEW;
     private final AgenciaJsonRepository AGENCIA_REPOSITORY;
@@ -22,7 +22,6 @@ public class AgenciaController implements IAgenciaController{
         return new AgenciaController();
     }
 
-    @Override
     public void cadastrarAgencia() {
         String nome = AGENCIA_VIEW.obterDadoString("Entre com o Nome da Agência");
         String logradouro = AGENCIA_VIEW.obterDadoString("Entre com o logradouro");
@@ -42,7 +41,7 @@ public class AgenciaController implements IAgenciaController{
         }while (agencia == null);
         return agencia;
     }
-    @Override
+    
     public void removerAgencia() {
         List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
         AGENCIA_VIEW.imprimirLista(agencias);
@@ -52,7 +51,7 @@ public class AgenciaController implements IAgenciaController{
             AGENCIA_REPOSITORY.remover(agenciaASerAlterada.getNome());
         }
     }
-    @Override
+    
     public void alterarAgencia() {
         List<Agencia> agencias = AGENCIA_REPOSITORY.getEntidades();
         AGENCIA_VIEW.imprimirLista(agencias);
@@ -64,7 +63,7 @@ public class AgenciaController implements IAgenciaController{
         }
     }
 
-    @Override
+    
     public void buscarAgencia() {
 
         String agenciaBuscada = AGENCIA_VIEW.obterDadoString("Entre com o Nome ou logradouro da Agência");

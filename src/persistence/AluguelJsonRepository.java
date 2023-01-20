@@ -33,14 +33,39 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
     @Override
     public List<Aluguel> buscarPorId(String idAluguel) {
         return this.entidades.stream()
-                .filter(aluguel -> aluguel.getId().toLowerCase().contains(idAluguel.toLowerCase()))
+                .filter(aluguel -> aluguel.getId().toLowerCase().contains(idAluguel.toLowerCase()) && aluguel.getDevolvido() == false)
                 .toList();
     }
 
-    @Override
-    public boolean salvar(Aluguel entidade){
-        entidade.getVeiculo().alugar();
-        return super.salvar(entidade);
+    public List<Aluguel> buscarPorCliente(String nomeCliente) {
+        return this.entidades.stream()
+                .filter(c -> c.getCliente().getNome().toLowerCase().contains(nomeCliente.toLowerCase()) && c.getDevolvido() == false)
+                .toList();
     }
+
+    public List<Aluguel> buscarDevolucaoPorId(String idAluguel) {
+      return this.entidades.stream()
+              .filter(aluguel -> aluguel.getDevolvido() == true)
+              .filter(aluguel -> aluguel.getId().toLowerCase().contains(idAluguel.toLowerCase()))
+              .toList();
+  }
+
+  public List<Aluguel> buscarDevolucaoPorCliente(String nomeCliente) {
+      return this.entidades.stream()
+              .filter(c -> c.getCliente().getNome().toLowerCase().contains(nomeCliente.toLowerCase()) && c.getDevolvido() == true)
+              .toList();
+  }
+
+  public List<Aluguel> listarTodosOsAlugueisEmAberto(){
+    return entidades.stream()
+            .filter(alugueis -> alugueis.getDevolvido() == false)
+            .toList();
+  }
+
+  public List<Aluguel> listarTodosOsAlugueisEncerrados(){
+    return entidades.stream()
+            .filter(alugueis -> alugueis.getDevolvido() == false)
+            .toList();
+  }
 
 }

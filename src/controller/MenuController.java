@@ -1,6 +1,7 @@
 package controller;
 
 import util.ConsoleUIHelper;
+import view.AluguelView;
 
 public class MenuController {
 
@@ -24,14 +25,12 @@ public class MenuController {
             case 10 -> ClienteController.getInstancia().alterarCliente();
             case 11 -> ClienteController.getInstancia().buscarCliente();
             case 12 -> AluguelController.getInstancia().alugar();
-            case 13 -> {}
-            case 14 -> {}
-            case 15 -> {}
-            case 16 -> {}
-            case 17 -> {}
-            case 18 -> {
-                System.out.println("Finalizando aplicação...");
-                System.exit(0);
+            case 13 -> AluguelController.getInstancia().encerrarAluguel();
+            case 14 -> AluguelController.getInstancia().gerarComprovanteAluguel();
+            case 15 -> AluguelController.getInstancia().gerarComprovanteDevolucao();
+            case 16 -> {
+              System.out.println("Finalizando aplicação...");
+              System.exit(0);
             }
             default -> System.out.println("\nErro desconhecido\n");       //tratamento de erro feito por ConsoleUIHelper
         }
