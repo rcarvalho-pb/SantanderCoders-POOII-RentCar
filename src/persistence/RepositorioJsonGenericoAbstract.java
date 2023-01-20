@@ -8,9 +8,9 @@ import com.google.gson.GsonBuilder;
 
 import model.IEntidade;
 
-public class RepositorioJsonGenericoAbstract<T extends IEntidade> extends RepositorioGenericoAbstract<T> {
-  final private String pathOfFile;
-  private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+public abstract class RepositorioJsonGenericoAbstract<T extends IEntidade> extends RepositorioGenericoAbstract<T> {
+  final protected String pathOfFile;
+  protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
   public RepositorioJsonGenericoAbstract(String pathOfFile) {
     this.pathOfFile  = "src/db/"+pathOfFile+".json";
@@ -27,6 +27,13 @@ public class RepositorioJsonGenericoAbstract<T extends IEntidade> extends Reposi
     return entidadeSalva;
   }
 
-  
+  abstract void lerJson();
+
+  public static void importarDadosJson(){
+    RepositoryFactory.ALUGUEL_REPOSITORY.lerJson();
+    RepositoryFactory.VEICULOS_REPOSITORY.lerJson();
+    RepositoryFactory.CLIENTE_REPOSITORY.lerJson();
+    RepositoryFactory.AGENCIA_REPOSITORY.lerJson();
+  }
   
 }
