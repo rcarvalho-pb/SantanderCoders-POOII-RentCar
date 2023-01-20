@@ -1,7 +1,35 @@
 [
   {
-    "dataRetirada": "21/01/2023 12:00",
-    "dataDevolucao": "22/01/2023 12:01",
+    "dataRetirada": "20/01/2023 20:00",
+    "dataDevolucao": "22/01/2023 22:00",
+    "veiculo": {
+      "placa": "321",
+      "cor": "amarelo",
+      "modelo": "uno",
+      "fabricante": "fiat",
+      "disponivel": true,
+      "tipoVeiculo": "CARRO"
+    },
+    "agenciaRetirada": {
+      "nome": "Ag1",
+      "logradouro": "Rua T"
+    },
+    "agenciaDevolucao": {
+      "nome": "Ag3",
+      "logradouro": "Rua H"
+    },
+    "cliente": {
+      "tipoCliente": "PESSOA_FISICA",
+      "nome": "Ramon",
+      "documento": "123456"
+    },
+    "id": "9bcf0c70-f7e1-443e-ad69-937720d2dcb5",
+    "valorAPagar": 450.00,
+    "devolvido": false
+  },
+  {
+    "dataRetirada": "20/01/2023 20:00",
+    "dataDevolucao": "25/01/2023 20:00",
     "veiculo": {
       "placa": "123",
       "cor": "vermelho",
@@ -15,16 +43,16 @@
       "logradouro": "Rua T"
     },
     "agenciaDevolucao": {
-      "nome": "Ag1",
-      "logradouro": "Rua T"
+      "nome": "Ag2",
+      "logradouro": "Rua K"
     },
     "cliente": {
       "tipoCliente": "PESSOA_FISICA",
-      "nome": "Raruo",
-      "documento": "666666"
+      "nome": "Paulo",
+      "documento": "991548"
     },
-    "id": "dc17a381-2d28-41ee-b65a-28a3dbe73586",
-    "valorAPagar": 300.00,
-    "devolvido": true
+    "id": "5a177874-e847-4885-8ddb-cc710af200a1",
+    "valorAPagar": 750.00,
+    "devolvido": false
   }
 ]

@@ -36,18 +36,21 @@ public class AluguelView implements IView{
       Cliente cliente = aluguel.getCliente();
       TipoCliente tipoCliente = cliente.getTipoCliente();
       int diasParaDesconto = tipoCliente.getQuantidadeDeDiasParaDesconto();
+      System.out.println(diasParaDesconto);
       Agencia agenciaRetirada = aluguel.getAgenciaRetirada();
       Agencia agenciaDevolucao = aluguel.getAgenciaDevolucao();
       LocalDateTime dataRetirada = DataFormatada.stringParaLocalDateTime(aluguel.getDataRetirada());
       LocalDateTime dataDevolucao = DataFormatada.stringParaLocalDateTime(aluguel.getDataDevolucao());
       long diasAlugados = aluguel.quantidadeDeDiasAlugado(aluguel.getDataRetirada(), aluguel.getDataDevolucao());
-      double desconto = diasAlugados >= diasParaDesconto ? tipoCliente.getDesconto() : 0.0;
+      System.out.println(diasAlugados);
+      double desconto = diasAlugados > diasParaDesconto ? (1 - tipoCliente.getDesconto())*100 : 0.0;
+      System.out.println(desconto);
       BigDecimal valorAluguel = aluguel.getValorAPagar();
 
       ConsoleUIHelper.drawHeader(String.format("Comprovante de %s", texto), 80);
       ConsoleUIHelper.drawWithRightPadding(("Id do aluguel: " + id), 80, ' ');
-      ConsoleUIHelper.drawWithRightPadding(("Data de retirada: " + dataRetirada), 80, ' ');
-      ConsoleUIHelper.drawWithRightPadding(("Data de devolução: " + dataDevolucao), 80, ' ');
+      ConsoleUIHelper.drawWithRightPadding(("Data de retirada: " + DataFormatada.localDateTimeParaString(dataRetirada)), 80, ' ');
+      ConsoleUIHelper.drawWithRightPadding(("Data de devolução: " + DataFormatada.localDateTimeParaString(dataDevolucao)), 80, ' ');
       ConsoleUIHelper.fillVSpace(0, 80);
       ConsoleUIHelper.drawLine(80);
 
@@ -85,8 +88,8 @@ public class AluguelView implements IView{
       ConsoleUIHelper.fillVSpace(0,80);
       ConsoleUIHelper.drawWithRightPadding("Preço do aluguel por hora: R$" + valorAluguelDiario, 80,' ');
       ConsoleUIHelper.drawWithRightPadding("Quantidade de dias alugado: " + diasAlugados, 80,' ');
-      ConsoleUIHelper.drawWithRightPadding("Desconto: " + desconto + "%", 80,' ');
-      ConsoleUIHelper.drawWithRightPadding("Total do aluguel : R$" + valorAluguel, 80, ' ');
+      ConsoleUIHelper.drawWithRightPadding(String.format("Desconto: %.2f %%",desconto), 80,' ');
+      ConsoleUIHelper.drawWithRightPadding(String.format("Valor total: R$%.2f",valorAluguel), 80, ' ');
       ConsoleUIHelper.fillVSpace(0, 80);
       ConsoleUIHelper.drawLine(80);
 

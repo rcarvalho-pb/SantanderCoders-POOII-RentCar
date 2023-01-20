@@ -39,7 +39,7 @@ public class VeiculoController {
 
     }
 
-    private Veiculo validarBuscaVeiculoPorPlaca(){
+    public Veiculo validarBuscaVeiculoPorPlaca(){
         Veiculo veiculo;
         do{
             String placa = VEICULO_VIEW.obterDadoString("Entre com o número da placa");
@@ -78,10 +78,15 @@ public class VeiculoController {
     }
 
     public Veiculo escolherVeiculoParaAlugar(){
-        
-        String veiculoString = ConsoleUIHelper.askSimpleInput("Qual o modelo do veículo desejado?");
-        List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(veiculoString).stream().filter(Veiculo::isDisponivel).collect(Collectors.toList());
-        VEICULO_VIEW.imprimirLista(veiculosRetornados);
-        return VEICULOS_REPOSITORY.buscarVeiculoPelaPlaca(veiculosRetornados);
+        while (true){
+            String veiculoString = ConsoleUIHelper.askSimpleInput("Qual o modelo do veículo desejado?");
+            List<Veiculo> veiculosRetornados = VEICULOS_REPOSITORY.buscarPorModelo(veiculoString).stream().filter(Veiculo::isDisponivel).collect(Collectors.toList());
+            if(!veiculosRetornados.isEmpty()){
+                VEICULO_VIEW.imprimirLista(veiculosRetornados);
+                return VEICULOS_REPOSITORY.buscarVeiculoPelaPlaca(veiculosRetornados);
+            }
+            System.out.println("\nVeículo não encontrado.Entre com um novo modelo\n");
+        }
+
     }
 }

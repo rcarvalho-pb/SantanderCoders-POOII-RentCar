@@ -62,13 +62,13 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
 
   public List<Aluguel> listarTodosOsAlugueisEmAberto(){
     return entidades.stream()
-            .filter(alugueis -> alugueis.getDevolvido() == false)
+            .filter(alugueis -> !alugueis.getDevolvido())
             .toList();
   }
 
   public List<Aluguel> listarTodosOsAlugueisEncerrados(){
     return entidades.stream()
-            .filter(alugueis -> alugueis.getDevolvido() == true)
+            .filter(Aluguel::getDevolvido)
             .toList();
   }
 

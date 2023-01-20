@@ -53,7 +53,8 @@ public class Aluguel implements IEntidade {
     }
 
     public int quantidadeDeDiasAlugado(String dataRetirada, String dataDevolucao){
-      return (int)Math.ceil((double)ChronoUnit.MINUTES.between(DataFormatada.stringParaLocalDateTime(dataRetirada), DataFormatada.stringParaLocalDateTime(dataDevolucao))/(double)(24*60));
+      return (int)Math.ceil((double)ChronoUnit.MINUTES.between(DataFormatada.stringParaLocalDateTime(dataRetirada),
+              DataFormatada.stringParaLocalDateTime(dataDevolucao))/(double)(24*60));
     }    
     
     public String getDataRetirada() {
@@ -89,7 +90,7 @@ public class Aluguel implements IEntidade {
         System.out.println("Data alterada. ");
         dataDevolucao = novaDataDevolucao;
     }
-    
+
 
     public boolean encerrarAluguel(){
       if(devolvido == false) {

@@ -4,7 +4,7 @@
     "cor": "vermelho",
     "modelo": "uno",
     "fabricante": "fiat",
-    "disponivel": true,
+    "disponivel": false,
     "tipoVeiculo": "CARRO"
   },
   {
@@ -12,7 +12,7 @@
     "cor": "amarelo",
     "modelo": "uno",
     "fabricante": "fiat",
-    "disponivel": true,
+    "disponivel": false,
     "tipoVeiculo": "CARRO"
   },
   {
@@ -30,5 +30,37 @@
     "fabricante": "ninja",
     "disponivel": true,
     "tipoVeiculo": "CARRO"
+  },
+  {
+    "placa": "6547",
+    "cor": "azul",
+    "modelo": "Honda",
+    "fabricante": "Honda",
+    "disponivel": true,
+    "tipoVeiculo": "MOTO"
+  },
+  {
+    "placa": "8745",
+    "cor": "amarelo",
+    "modelo": "Yamaha",
+    "fabricante": "Yamaha",
+    "disponivel": true,
+    "tipoVeiculo": "MOTO"
+  },
+  {
+    "placa": "7814",
+    "cor": "branco",
+    "modelo": "HR",
+    "fabricante": "Hyundai",
+    "disponivel": true,
+    "tipoVeiculo": "CAMINHAO"
+  },
+  {
+    "placa": "3689",
+    "cor": "vermelho",
+    "modelo": "Magirus",
+    "fabricante": "Iveco",
+    "disponivel": true,
+    "tipoVeiculo": "CAMINHAO"
   }
 ]

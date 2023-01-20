@@ -43,11 +43,12 @@ public class AluguelController {
 
     Aluguel aluguel = new Aluguel(dataRetirada, dataDevolucao, veiculo, agenciaRetirada, agenciaDevolucao, cliente);
     if(ALUGUEL_REPOSITORY.salvar(aluguel)){
-              ALUGUEL_VIEW.imprimirComprovante(aluguel, "Aluguel");
-              return;
-          }
-          System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");
-
+        veiculo.setDisponivel(false);
+        RepositoryFactory.VEICULOS_REPOSITORY.salvar(veiculo);
+        ALUGUEL_VIEW.imprimirComprovante(aluguel, "Aluguel");
+        return;
+    }
+    System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");
   }
 
     private LocalDateTime validarData(String devolucaoOuRetirada, LocalDateTime dataAComparar){

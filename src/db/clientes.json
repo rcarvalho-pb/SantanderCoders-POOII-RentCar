@@ -18,5 +18,10 @@
     "tipoCliente": "PESSOA_FISICA",
     "nome": "Raruo",
     "documento": "666666"
+  },
+  {
+    "tipoCliente": "PESSOA_JURIDICA",
+    "nome": "Bananas e cia",
+    "documento": "654784"
   }
 ]
