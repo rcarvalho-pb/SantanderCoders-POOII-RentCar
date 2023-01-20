@@ -54,5 +54,33 @@
     "id": "d91565bb-e6db-4178-adb3-5c129cd0e2e7",
     "valorAPagar": 900.000,
     "devolvido": false
+  },
+  {
+    "dataRetirada": "20/01/2023 22:00",
+    "dataDevolucao": "30/01/2023 23:00",
+    "veiculo": {
+      "placa": "123",
+      "cor": "vermelho",
+      "modelo": "uno",
+      "fabricante": "fiat",
+      "disponivel": true,
+      "tipoVeiculo": "CARRO"
+    },
+    "agenciaRetirada": {
+      "nome": "Agência 1",
+      "logradouro": "Avenida Paulista, SP"
+    },
+    "agenciaDevolucao": {
+      "nome": "Ag3",
+      "logradouro": "Rua H"
+    },
+    "cliente": {
+      "tipoCliente": "PESSOA_JURIDICA",
+      "nome": "Pamela",
+      "documento": "321123"
+    },
+    "id": "3bc1e210-1f97-4054-ad7f-ffb4b5101f73",
+    "valorAPagar": 1485.000,
+    "devolvido": true
   }
 ]

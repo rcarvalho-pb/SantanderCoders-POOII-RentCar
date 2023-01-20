@@ -6,22 +6,22 @@
   },
   {
     "tipoCliente": "PESSOA_FISICA",
-    "nome": "Pamella",
-    "documento": "321123"
-  },
-  {
-    "tipoCliente": "PESSOA_FISICA",
     "nome": "Paulo",
     "documento": "991548"
-  },
-  {
-    "tipoCliente": "PESSOA_FISICA",
-    "nome": "Raruo",
-    "documento": "666666"
   },
   {
     "tipoCliente": "PESSOA_JURIDICA",
     "nome": "Bananas e cia",
     "documento": "654784"
+  },
+  {
+    "tipoCliente": "PESSOA_JURIDICA",
+    "nome": "João do Caminhão",
+    "documento": "32547"
+  },
+  {
+    "tipoCliente": "PESSOA_JURIDICA",
+    "nome": "Pamela",
+    "documento": "321123"
   }
 ]

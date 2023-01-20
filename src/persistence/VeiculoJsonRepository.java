@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import controller.VeiculoController;
 import model.Veiculo;
-import util.ConsoleUIHelper;
 
 import java.io.FileReader;
 import java.io.IOException;

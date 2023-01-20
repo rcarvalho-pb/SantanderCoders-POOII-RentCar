@@ -13,7 +13,6 @@ import model.Cliente;
 import model.Veiculo;
 import persistence.AluguelJsonRepository;
 import persistence.RepositoryFactory;
-import util.ConsoleUIHelper;
 import util.DataFormatada;
 import view.AluguelView;
 
@@ -71,7 +70,7 @@ public class AluguelController {
   public void encerrarAluguel(){
     List<Aluguel> alugueis = ALUGUEL_REPOSITORY.listarTodosOsAlugueisEmAberto();
     ALUGUEL_VIEW.imprimirLista(alugueis);
-    if(!Controller.isListaVazia(alugueis)){
+    if(Controller.isListaNaoVazia(alugueis)){
         Aluguel aluguel = validarBuscaAluguelPorId();
         Veiculo veiculoAlugado = aluguel.getVeiculo();
         aluguel.encerrarAluguel();
@@ -93,7 +92,7 @@ public class AluguelController {
   public void gerarComprovanteAluguel() {
     List<Aluguel> alugueis = ALUGUEL_REPOSITORY.listarTodosOsAlugueisEmAberto();
     ALUGUEL_VIEW.imprimirLista(alugueis);
-    if(!Controller.isListaVazia(alugueis)){
+    if(Controller.isListaNaoVazia(alugueis)){
         Aluguel aluguel = validarBuscaAluguelPorId();
         ALUGUEL_VIEW.imprimirComprovante(aluguel, "aluguel");
     } 
@@ -102,7 +101,7 @@ public class AluguelController {
   public void gerarComprovanteDevolucao(){
     List<Aluguel> alugueis = ALUGUEL_REPOSITORY.listarTodosOsAlugueisEncerrados();
     ALUGUEL_VIEW.imprimirLista(alugueis);
-    if(!Controller.isListaVazia(alugueis)){
+    if(Controller.isListaNaoVazia(alugueis)){
         Aluguel aluguel = validarBuscaAluguelPorId();
         ALUGUEL_VIEW.imprimirComprovante(aluguel, "devolucao");
     } 

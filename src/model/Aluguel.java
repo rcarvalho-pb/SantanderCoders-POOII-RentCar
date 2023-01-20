@@ -1,7 +1,6 @@
 package model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
@@ -73,24 +72,9 @@ public class Aluguel implements IEntidade {
       return this.agenciaDevolucao;
     }
 
-    public void setAgenciaDevolucao(Agencia agenciaDevolucao){
-      this.agenciaDevolucao = agenciaDevolucao;
-
-    }
-
     public Veiculo getVeiculo(){
       return veiculo;
     }
-    
-    public void alterarDataDevolução(String novaDataDevolucao) {
-      if(DataFormatada.stringParaLocalDateTime(novaDataDevolucao).isBefore(DataFormatada.stringParaLocalDateTime(dataRetirada))){
-          System.out.println("Data inválida. Data anterior a data de retirada.");
-          return;
-        }
-        System.out.println("Data alterada. ");
-        dataDevolucao = novaDataDevolucao;
-    }
-
 
     public boolean encerrarAluguel(){
       if(!devolvido) {
