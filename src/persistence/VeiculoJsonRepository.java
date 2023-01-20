@@ -2,6 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import controller.VeiculoController;
 import model.Veiculo;
 import util.ConsoleUIHelper;
 
@@ -40,12 +41,6 @@ public class VeiculoJsonRepository extends RepositorioJsonGenericoAbstract<Veicu
     }
 
     public Veiculo buscarVeiculoPelaPlaca(List<Veiculo> veiculos){
-        if (!veiculos.isEmpty() && veiculos.size() == 1){
-            return veiculos.get(0);
-        }
-
-        String placa = ConsoleUIHelper.askSimpleInput("Qual a placa do veiculo? ");
-
-        return buscarPeloId(placa);
+        return VeiculoController.getInstancia().validarBuscaVeiculoPorPlaca();
     }
 }

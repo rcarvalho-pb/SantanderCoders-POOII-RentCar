@@ -2,6 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import controller.ClienteController;
 import model.Cliente;
 import util.ConsoleUIHelper;
 
@@ -55,12 +56,7 @@ public class ClienteJsonRepository extends RepositorioJsonGenericoAbstract<Clien
     // }
 
     public Cliente selecionarCliente(){
-      if (!entidades.isEmpty() && entidades.size() == 1){
-            return entidades.get(0);
-        }
 
-        String documentoCliente = ConsoleUIHelper.askSimpleInput("Qual o documento do cliente? ");
-
-        return buscarPeloId(documentoCliente);
+        return ClienteController.getInstancia().validarBuscaClientePorDocumento();
     }
 }

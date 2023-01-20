@@ -39,7 +39,11 @@ public class Veiculo implements IEntidade {
       return disponivel;
   }
 
-  public TipoVeiculo getTipoVeiculo() {
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    public TipoVeiculo getTipoVeiculo() {
       return tipoVeiculo;
   }
 

@@ -2,6 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import controller.AgenciaController;
 import model.Agencia;
 import util.ConsoleUIHelper;
 
@@ -42,13 +43,7 @@ public class AgenciaJsonRepository extends RepositorioJsonGenericoAbstract<Agenc
     }
 
     public Agencia selecionarAgencia(){
-      if (!entidades.isEmpty() && entidades.size() == 1){
-            return entidades.get(0);
-        }
-
-        String agencia = ConsoleUIHelper.askSimpleInput("Qual a agencia? ");
-
-        return buscarPeloId(agencia);
+      return AgenciaController.getInstancia().validarBuscaAgenciaPorNome();
     }
     
 }

@@ -33,7 +33,7 @@ public class ClienteController {
         }
         System.out.println("\nCliente duplicado. Não foi cadastrado\n");
     }
-    private Cliente validarBuscaClientePorDocumento(){
+    public Cliente validarBuscaClientePorDocumento(){
         Cliente cliente;
         do{
             String documento = CLIENTE_VIEW.obterDadoString("Entre com o número do documento");
@@ -72,9 +72,15 @@ public class ClienteController {
     }
 
     public Cliente escolherCliente() {
-        String clienteString = ConsoleUIHelper.askSimpleInput("Qual o nome do cliente?");
-        List<Cliente> clientesRetornadas = CLIENTE_REPOSITORY.buscarPorNome(clienteString);
-        CLIENTE_VIEW.imprimirLista(clientesRetornadas);
-        return CLIENTE_REPOSITORY.selecionarCliente();
+        while (true){
+            String clienteString = ConsoleUIHelper.askSimpleInput("Qual o nome do cliente?");
+            List<Cliente> clientesRetornadas = CLIENTE_REPOSITORY.buscarPorNome(clienteString);
+            if(!clientesRetornadas.isEmpty()){
+                CLIENTE_VIEW.imprimirLista(clientesRetornadas);
+                return CLIENTE_REPOSITORY.selecionarCliente();
+            }
+            System.out.println("\nCliente não encontrado.Entre com um novo nome\n");
+        }
+
     }
 }

@@ -33,7 +33,7 @@ public class AgenciaController {
         System.out.println("\nAgência duplicada. Não foi cadastrado\n");
     }
 
-    private Agencia validarBuscaAgenciaPorNome(){
+    public Agencia validarBuscaAgenciaPorNome(){
         Agencia agencia;
         do{
             String nome = AGENCIA_VIEW.obterDadoString("Entre com o Nome da Agência");
@@ -72,10 +72,17 @@ public class AgenciaController {
     }
 
     public Agencia escolherAgencia(String retiradaOuDevolucao){
+        while(true){
+            String agenciaString = ConsoleUIHelper.askSimpleInput("Qual o nome ou logradouro da agencia de " + retiradaOuDevolucao + "?");
+            List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaString);
+            if(!agenciasRetornadas.isEmpty()){
+                AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
+                return AGENCIA_REPOSITORY.selecionarAgencia();
+            }
+            System.out.println("\nAgência não encontrada.Entre com um novo nome ou logradouro\n");
+
+        }
         
-        String agenciaString = ConsoleUIHelper.askSimpleInput("Qual o nome ou logradouro da agencia de " + retiradaOuDevolucao + "?");
-        List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaString);
-        AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
-        return AGENCIA_REPOSITORY.selecionarAgencia();
+
     }
 }

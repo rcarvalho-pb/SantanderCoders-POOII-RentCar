@@ -8,6 +8,7 @@ public enum TipoCliente {
     
     TipoCliente(double desconto, int quantidadeDeDiasParaDesconto) {
         this.desconto = desconto;
+        this.quantidadeDeDiasParaDesconto = quantidadeDeDiasParaDesconto;
     }
     public double getDesconto(){
         return desconto;
