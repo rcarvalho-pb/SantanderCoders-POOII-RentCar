@@ -1,18 +1,12 @@
-## Getting Started
+# 💲 PROJETO DE LOCADORA DE VEICULOS - SANTANDER CODERS
+> *Turma 938 - Santander Coders - Trilha Web FullStack*
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+### 😎 Grupo:
+- Ailton Luz
+- Felipe Zanardo
+- Matheus Ribeiro Panobianco
+- Ramon Carvalho
 
-## Folder Structure
+## 📋 Projeto - Programação Orientada a Objetos II
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+> Para executar o projeto é necessário adicionar a biblioteca Gson, onde o arquivo .jar está disponível na subpasta biblioteca-jar dentro pasta src.
