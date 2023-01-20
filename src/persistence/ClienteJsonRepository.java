@@ -25,7 +25,7 @@ public class ClienteJsonRepository extends RepositorioJsonGenericoAbstract<Clien
                 Type listType = new TypeToken<List<Cliente>>() {}.getType();
                 List<Cliente> lista = new Gson().fromJson(reader, listType);
 
-                this.entidades.addAll(lista);
+                if(lista != null) this.entidades.addAll(lista);
 
             } catch (IOException e) {
                 e.printStackTrace();

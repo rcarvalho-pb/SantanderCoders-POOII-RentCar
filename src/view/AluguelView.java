@@ -82,7 +82,7 @@ public class AluguelView implements IView{
 
       ConsoleUIHelper.drawWithPadding("Cálculo do Aluguel", 80);
       ConsoleUIHelper.fillVSpace(0,80);
-      ConsoleUIHelper.drawWithRightPadding("Preço do aluguel por hora: R$" + valorAluguelDiario, 80,' ');
+      ConsoleUIHelper.drawWithRightPadding("Preço do aluguel por dia: R$" + valorAluguelDiario, 80,' ');
       ConsoleUIHelper.drawWithRightPadding("Quantidade de dias alugado: " + diasAlugados, 80,' ');
       ConsoleUIHelper.drawWithRightPadding(String.format("Desconto: %.2f %%",desconto), 80,' ');
       ConsoleUIHelper.drawWithRightPadding(String.format("Valor total: R$%.2f",valorAluguel), 80, ' ');

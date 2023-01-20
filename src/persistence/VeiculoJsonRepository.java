@@ -25,7 +25,7 @@ public class VeiculoJsonRepository extends RepositorioJsonGenericoAbstract<Veicu
                 Type listType = new TypeToken<List<Veiculo>>() {}.getType();
                 List<Veiculo> lista = new Gson().fromJson(reader, listType);
 
-                this.entidades.addAll(lista);
+                if(lista != null) this.entidades.addAll(lista);
 
             } catch (IOException e) {
                 e.printStackTrace();

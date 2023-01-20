@@ -28,34 +28,6 @@
     "devolvido": true
   },
   {
-    "dataRetirada": "20/01/2023 16:00",
-    "dataDevolucao": "29/01/2023 16:01",
-    "veiculo": {
-      "placa": "8745",
-      "cor": "amarelo",
-      "modelo": "Yamaha",
-      "fabricante": "Yamaha",
-      "disponivel": true,
-      "tipoVeiculo": "MOTO"
-    },
-    "agenciaRetirada": {
-      "nome": "Ag4",
-      "logradouro": "Rua R"
-    },
-    "agenciaDevolucao": {
-      "nome": "Ag4",
-      "logradouro": "Rua R"
-    },
-    "cliente": {
-      "tipoCliente": "PESSOA_JURIDICA",
-      "nome": "Bananas e cia",
-      "documento": "654784"
-    },
-    "id": "d91565bb-e6db-4178-adb3-5c129cd0e2e7",
-    "valorAPagar": 900.000,
-    "devolvido": false
-  },
-  {
     "dataRetirada": "20/01/2023 22:00",
     "dataDevolucao": "30/01/2023 23:00",
     "veiculo": {
@@ -81,6 +53,62 @@
     },
     "id": "3bc1e210-1f97-4054-ad7f-ffb4b5101f73",
     "valorAPagar": 1485.000,
+    "devolvido": true
+  },
+  {
+    "dataRetirada": "20/01/2023 22:00",
+    "dataDevolucao": "21/01/2023 12:00",
+    "veiculo": {
+      "placa": "123",
+      "cor": "vermelho",
+      "modelo": "uno",
+      "fabricante": "fiat",
+      "disponivel": false,
+      "tipoVeiculo": "CARRO"
+    },
+    "agenciaRetirada": {
+      "nome": "Ag3",
+      "logradouro": "Rua H"
+    },
+    "agenciaDevolucao": {
+      "nome": "Ag3",
+      "logradouro": "Rua H"
+    },
+    "cliente": {
+      "tipoCliente": "PESSOA_JURIDICA",
+      "nome": "Bananas e cia",
+      "documento": "654784"
+    },
+    "id": "9b7973cf-1956-4597-82e3-8163acc5fc06",
+    "valorAPagar": 150.00,
+    "devolvido": false
+  },
+  {
+    "dataRetirada": "20/01/2023 16:00",
+    "dataDevolucao": "29/01/2023 16:01",
+    "veiculo": {
+      "placa": "8745",
+      "cor": "amarelo",
+      "modelo": "Yamaha",
+      "fabricante": "Yamaha",
+      "disponivel": true,
+      "tipoVeiculo": "MOTO"
+    },
+    "agenciaRetirada": {
+      "nome": "Ag4",
+      "logradouro": "Rua R"
+    },
+    "agenciaDevolucao": {
+      "nome": "Ag4",
+      "logradouro": "Rua R"
+    },
+    "cliente": {
+      "tipoCliente": "PESSOA_JURIDICA",
+      "nome": "Bananas e cia",
+      "documento": "654784"
+    },
+    "id": "d91565bb-e6db-4178-adb3-5c129cd0e2e7",
+    "valorAPagar": 900.000,
     "devolvido": true
   }
 ]

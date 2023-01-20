@@ -25,8 +25,7 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
             try (FileReader reader = new FileReader(pathOfFile)) {
                 Type listType = new TypeToken<List<Aluguel>>() {}.getType();
                 List<Aluguel> lista = new Gson().fromJson(reader, listType);
-
-                this.entidades.addAll(lista);
+                if(lista != null) this.entidades.addAll(lista);
 
             } catch (IOException e) {
                 e.printStackTrace();

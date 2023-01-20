@@ -25,7 +25,7 @@ public class AgenciaJsonRepository extends RepositorioJsonGenericoAbstract<Agenc
         Type listType = new TypeToken<List<Agencia>>() {}.getType();
         List<Agencia> lista = new Gson().fromJson(reader, listType);
 
-        this.entidades.addAll(lista);
+        if(lista != null) this.entidades.addAll(lista);
 
       } catch (IOException e) {
         e.printStackTrace();
