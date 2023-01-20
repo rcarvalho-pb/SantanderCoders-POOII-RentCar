@@ -9,5 +9,8 @@ public class Controller {
     static boolean isListaNaoVazia(List<?> lista){
         return !lista.isEmpty();
     }
+    static boolean isListaVazia(List<?> lista){
+      return lista.isEmpty();
+  }
 
 }

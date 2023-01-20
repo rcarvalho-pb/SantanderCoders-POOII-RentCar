@@ -20,20 +20,28 @@ public class Veiculo implements IEntidade {
     }
 
     public String getPlaca() {
-        return placa;
-    }
+      return placa;
+  }
 
-    public String getModelo() {
-        return modelo;
-    }
+  public String getCor() {
+      return cor;
+  }
 
-    public boolean isDisponivel() {
-        return disponivel;
-    }
+  public String getModelo() {
+      return modelo;
+  }
 
-    public TipoVeiculo getTipoVeiculo() {
-        return tipoVeiculo;
-    }
+  public String getFabricante() {
+      return fabricante;
+  }
+
+  public boolean isDisponivel() {
+      return disponivel;
+  }
+
+  public TipoVeiculo getTipoVeiculo() {
+      return tipoVeiculo;
+  }
 
     public boolean alugar(){
         if(disponivel == false){
