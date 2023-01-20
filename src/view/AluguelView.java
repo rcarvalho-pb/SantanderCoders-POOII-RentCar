@@ -36,15 +36,12 @@ public class AluguelView implements IView{
       Cliente cliente = aluguel.getCliente();
       TipoCliente tipoCliente = cliente.getTipoCliente();
       int diasParaDesconto = tipoCliente.getQuantidadeDeDiasParaDesconto();
-      System.out.println(diasParaDesconto);
       Agencia agenciaRetirada = aluguel.getAgenciaRetirada();
       Agencia agenciaDevolucao = aluguel.getAgenciaDevolucao();
       LocalDateTime dataRetirada = DataFormatada.stringParaLocalDateTime(aluguel.getDataRetirada());
       LocalDateTime dataDevolucao = DataFormatada.stringParaLocalDateTime(aluguel.getDataDevolucao());
       long diasAlugados = aluguel.quantidadeDeDiasAlugado(aluguel.getDataRetirada(), aluguel.getDataDevolucao());
-      System.out.println(diasAlugados);
       double desconto = diasAlugados > diasParaDesconto ? (1 - tipoCliente.getDesconto())*100 : 0.0;
-      System.out.println(desconto);
       BigDecimal valorAluguel = aluguel.getValorAPagar();
 
       ConsoleUIHelper.drawHeader(String.format("Comprovante de %s", texto), 80);

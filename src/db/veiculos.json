@@ -4,7 +4,7 @@
     "cor": "vermelho",
     "modelo": "uno",
     "fabricante": "fiat",
-    "disponivel": false,
+    "disponivel": true,
     "tipoVeiculo": "CARRO"
   },
   {
@@ -12,7 +12,7 @@
     "cor": "amarelo",
     "modelo": "uno",
     "fabricante": "fiat",
-    "disponivel": false,
+    "disponivel": true,
     "tipoVeiculo": "CARRO"
   },
   {
@@ -44,7 +44,7 @@
     "cor": "amarelo",
     "modelo": "Yamaha",
     "fabricante": "Yamaha",
-    "disponivel": true,
+    "disponivel": false,
     "tipoVeiculo": "MOTO"
   },
   {
