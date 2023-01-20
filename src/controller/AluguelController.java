@@ -1,8 +1,12 @@
 package controller;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
+import exception.DataInvalidaException;
 import model.Agencia;
 import model.Aluguel;
 import model.Cliente;
@@ -30,22 +34,12 @@ public class AluguelController {
   public void alugar() {
     Cliente cliente = ClienteController.getInstancia().escolherCliente();  
     Veiculo veiculo = VeiculoController.getInstancia().escolherVeiculoParaAlugar();
-    Agencia agenciaRetirada = AgenciaController.getInstancia().escolherAgencia();
-    Agencia agenciaDevolucao = AgenciaController.getInstancia().escolherAgencia();
+    Agencia agenciaRetirada = AgenciaController.getInstancia().escolherAgencia("retirada");
+    Agencia agenciaDevolucao = AgenciaController.getInstancia().escolherAgencia("devolução");
 
-    String dataRetirada = ConsoleUIHelper.askSimpleInput("Informe a data de retirada: (dd/mm/aaaa hh:mm)");
+      String dataRetirada = DataFormatada.localDateTimeParaString(validarData("retirada", LocalDateTime.now()));
 
-    String dataDevolucao = ConsoleUIHelper.askSimpleInput("Informe a data de devolução: (dd/mm/aaaa hh:mm)");
-
-    if(!DataFormatada.dataRetiradaValida(dataRetirada)){
-      System.out.println("Data inválida. Não alugamos carro no passado.");
-      return;
-    }
-
-    if(DataFormatada.dataDevolucaoAnteriorRetirada(dataRetirada, dataDevolucao)){
-      System.out.println("Data inválida: Devolução anterior a retirada. ");
-      return;
-    }
+      String dataDevolucao = DataFormatada.localDateTimeParaString(validarData("devolução", DataFormatada.stringParaLocalDateTime(dataRetirada)));
 
     Aluguel aluguel = new Aluguel(dataRetirada, dataDevolucao, veiculo, agenciaRetirada, agenciaDevolucao, cliente);
     if(ALUGUEL_REPOSITORY.salvar(aluguel)){
@@ -55,6 +49,23 @@ public class AluguelController {
           System.out.println("\nProtocolo de aluguel em duplicidade. Operação não realizada.\n");
 
   }
+
+    private LocalDateTime validarData(String devolucaoOuRetirada, LocalDateTime dataAComparar){
+        while (true){
+            try{
+                DateTimeFormatter parser = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
+                String dataString = ALUGUEL_VIEW.obterData(devolucaoOuRetirada);
+                LocalDateTime data = LocalDateTime.parse(dataString,parser);
+                if (data.isBefore(dataAComparar))
+                    throw new DataInvalidaException();
+                return LocalDateTime.parse(dataString, parser);
+            } catch (DataInvalidaException exception){
+                System.out.println("\nData inválida\n");
+            }catch (DateTimeParseException exception){
+                System.out.println("\nFormato inválido!\n");
+            }
+        }
+    }
 
   public void encerrarAluguel(){
     List<Aluguel> alugueis = ALUGUEL_REPOSITORY.listarTodosOsAlugueisEmAberto();

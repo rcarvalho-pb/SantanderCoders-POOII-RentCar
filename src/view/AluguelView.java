@@ -13,69 +13,20 @@ import model.Veiculo;
 import util.ConsoleUIHelper;
 import util.DataFormatada;
 
-public class AluguelView implements IView, IAluguelView{
-
-    @Override
-    public String obterAgencia() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o nome da agência");
-    }
-
-    @Override
-    public String obterVeiculo() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o a placa do veículo");
-    }
-
-    @Override
-    public String obterAno() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o ano");
-    }
-
-    @Override
-    public String obterMes() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o mes");
-    }
-
-    @Override
-    public String obterDia() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o dia");
-    }
-
-    @Override
-    public String obterHora() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o hora");
-    }
-
-    @Override
-    public String obterMinuto() {
-        return ConsoleUIHelper.askSimpleInput("Entre com o minuto");
-    }
-
-    public String obterDataCompleta(){
-      return ConsoleUIHelper.askSimpleInput("Entre com a data para reserva: (dd/mm/aaaa hh:mm)");
-    }
-
-    @Override
-    public String mostrarDadosAluguel() {
-        return null;
-    }
+public class AluguelView implements IView{
 
     public static AluguelView getInstance(){
         return new AluguelView();
     }
 
-    public static void comprovanteAluguel(Aluguel aluguel){
-        System.out.printf("""
-
-                Aluguel realizado com sucesso.
-                Protocolo: %s
-                Valor: R$ %.2f
-                
-                """, aluguel.getId(), aluguel.getValorAPagar());
-    }
-
     public String obterDadoString(String mensagem){
       return ConsoleUIHelper.askSimpleInput(mensagem);
-    }    
+    }
+
+    public String obterData(String dataDevolucaoOuRetirada) {
+        return getInstance().obterDadoString("Digite a data de "
+                + dataDevolucaoOuRetirada + " formato DD/MM/AAAA HH:MM");
+    }
 
     public void imprimirComprovante(Aluguel aluguel, String texto) {
       String id = aluguel.getId();

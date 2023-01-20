@@ -12,17 +12,14 @@ public class Aluguel implements IEntidade {
     private String dataDevolucao;
     private Veiculo veiculo;
     private Agencia agenciaRetirada;
-    private Agencia agenciaDevolucao = null;
+    private Agencia agenciaDevolucao;
     private Cliente cliente;
     private UUID id;
     private BigDecimal valorAPagar;
     private boolean devolvido;
     
 
-    public Aluguel(String dataRetirada,
-    String dataDevolucao, Veiculo veiculo,
-    Agencia agenciaRetirada, Agencia agenciaDevolucao, Cliente cliente) {
-      
+    public Aluguel(String dataRetirada, String dataDevolucao, Veiculo veiculo, Agencia agenciaRetirada, Agencia agenciaDevolucao, Cliente cliente) {
 
       id = UUID.randomUUID();
       this.dataRetirada = dataRetirada;
@@ -92,7 +89,6 @@ public class Aluguel implements IEntidade {
         System.out.println("Data alterada. ");
         dataDevolucao = novaDataDevolucao;
     }
-
     
 
     public boolean encerrarAluguel(){
