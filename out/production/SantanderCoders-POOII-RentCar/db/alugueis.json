@@ -26,33 +26,5 @@
     "id": "dc17a381-2d28-41ee-b65a-28a3dbe73586",
     "valorAPagar": 300.00,
     "devolvido": true
-  },
-  {
-    "dataRetirada": "20/01/2023 14:00",
-    "dataDevolucao": "20/01/2023 20:00",
-    "veiculo": {
-      "placa": "123",
-      "cor": "vermelho",
-      "modelo": "uno",
-      "fabricante": "fiat",
-      "disponivel": true,
-      "tipoVeiculo": "CARRO"
-    },
-    "agenciaRetirada": {
-      "nome": "Ag1",
-      "logradouro": "Rua T"
-    },
-    "agenciaDevolucao": {
-      "nome": "Ag2",
-      "logradouro": "Rua K"
-    },
-    "cliente": {
-      "tipoCliente": "PESSOA_FISICA",
-      "nome": "Ramon",
-      "documento": "123456"
-    },
-    "id": "78049c2e-68cf-4b72-93ef-f618d2874b7a",
-    "valorAPagar": 150.00,
-    "devolvido": false
   }
 ]
