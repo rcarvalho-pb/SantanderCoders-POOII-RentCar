@@ -71,7 +71,7 @@ public class AgenciaController {
         AGENCIA_VIEW.imprimirLista(agenciasRetornadas);
     }
 
-    public Agencia escolherAgenciaParaAlugar(){
+    public Agencia escolherAgencia(){
         
         String agenciaString = ConsoleUIHelper.askSimpleInput("Qual o nome ou logradouro da agencia?");
         List<Agencia> agenciasRetornadas = AGENCIA_REPOSITORY.buscarPorNomeOuLogradouro(agenciaString);

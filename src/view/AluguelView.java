@@ -2,6 +2,7 @@ package view;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import model.Agencia;
 import model.Aluguel;
@@ -74,10 +75,9 @@ public class AluguelView implements IView, IAluguelView{
 
     public String obterDadoString(String mensagem){
       return ConsoleUIHelper.askSimpleInput(mensagem);
-    }
+    }    
 
-    public void imprimirComprovante(Aluguel aluguel) {
-      System.out.println(aluguel);
+    public void imprimirComprovante(Aluguel aluguel, String texto) {
       String id = aluguel.getId();
       Veiculo veiculo = aluguel.getVeiculo();
       TipoVeiculo tipoVeiculo = veiculo.getTipoVeiculo();
@@ -93,7 +93,7 @@ public class AluguelView implements IView, IAluguelView{
       double desconto = diasAlugados >= diasParaDesconto ? tipoCliente.getDesconto() : 0.0;
       BigDecimal valorAluguel = aluguel.getValorAPagar();
 
-      ConsoleUIHelper.drawHeader("Comprovante de Aluguel", 80);
+      ConsoleUIHelper.drawHeader(String.format("Comprovante de %s", texto), 80);
       ConsoleUIHelper.drawWithRightPadding(("Id do aluguel: " + id), 80, ' ');
       ConsoleUIHelper.drawWithRightPadding(("Data de retirada: " + dataRetirada), 80, ' ');
       ConsoleUIHelper.drawWithRightPadding(("Data de devolução: " + dataDevolucao), 80, ' ');
@@ -136,6 +136,7 @@ public class AluguelView implements IView, IAluguelView{
       ConsoleUIHelper.drawWithRightPadding("Quantidade de dias alugado: " + diasAlugados, 80,' ');
       ConsoleUIHelper.drawWithRightPadding("Desconto: " + desconto + "%", 80,' ');
       ConsoleUIHelper.drawWithRightPadding("Total do aluguel : R$" + valorAluguel, 80, ' ');
+      ConsoleUIHelper.fillVSpace(0, 80);
       ConsoleUIHelper.drawLine(80);
 
     }

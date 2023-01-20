@@ -12,7 +12,7 @@ public class Aluguel implements IEntidade {
     private String dataDevolucao;
     private Veiculo veiculo;
     private Agencia agenciaRetirada;
-    private Agencia agenciaDevolucao;
+    private Agencia agenciaDevolucao = null;
     private Cliente cliente;
     private UUID id;
     private BigDecimal valorAPagar;
@@ -21,24 +21,16 @@ public class Aluguel implements IEntidade {
 
     public Aluguel(String dataRetirada,
     String dataDevolucao, Veiculo veiculo,
-    Agencia agenciaRetirada, Cliente cliente) {
-      if(!dataRetiradaValida(dataRetirada)){
-        System.out.println("Data inválida. Não alugamos carro no passado.");
-        return;
-      }
-
-      if (DataFormatada.stringParaLocalDateTime(dataDevolucao).isBefore(DataFormatada.stringParaLocalDateTime(dataRetirada))){
-        System.out.println("Data inválida. Não é possível devolver o carro antes de alugar. ");
-        return;
-      }
+    Agencia agenciaRetirada, Agencia agenciaDevolucao, Cliente cliente) {
+      
 
       id = UUID.randomUUID();
       this.dataRetirada = dataRetirada;
       this.dataDevolucao = dataDevolucao;
       this.veiculo = veiculo;
       this.agenciaRetirada = agenciaRetirada;
+      this.agenciaDevolucao = agenciaDevolucao;
       this.cliente = cliente;
-      this.agenciaDevolucao = null;
       this.devolvido = false;
 
       valorAPagar = valorAPagarPorCliente(cliente, veiculo, dataRetirada, dataDevolucao);
@@ -80,7 +72,7 @@ public class Aluguel implements IEntidade {
     }
 
     public Agencia getAgenciaDevolucao(){
-      return agenciaDevolucao;
+      return this.agenciaDevolucao;
     }
 
     public void setAgenciaDevolucao(Agencia agenciaDevolucao){
@@ -101,10 +93,7 @@ public class Aluguel implements IEntidade {
         dataDevolucao = novaDataDevolucao;
     }
 
-    private Boolean dataRetiradaValida(String dataRetirada){
-      if(DataFormatada.stringParaLocalDateTime(dataRetirada).isBefore(LocalDateTime.now())) return false;
-      return true;
-    }
+    
 
     public boolean encerrarAluguel(){
       if(devolvido == false) {
@@ -127,7 +116,7 @@ public class Aluguel implements IEntidade {
     @Override
     public String getDadosCabecalho() {
         return String.format("%-15s %-40s %-15s",
-                "Placa", "Agência", "Aluguel");
+                "Cliente", "Protocolo Aluguel", "Carro");
     }
 
     @Override
@@ -138,6 +127,12 @@ public class Aluguel implements IEntidade {
     @Override
     public String getId() {
         return id.toString();
+    }
+
+    @Override
+    public String toString(){
+      return  String.format("%-15s %-40s %-15s",
+      cliente.getNome(), id, veiculo.getModelo());
     }
 
 

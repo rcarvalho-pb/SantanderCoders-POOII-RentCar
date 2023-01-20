@@ -68,8 +68,15 @@ public class AluguelJsonRepository extends RepositorioJsonGenericoAbstract<Alugu
 
   public List<Aluguel> listarTodosOsAlugueisEncerrados(){
     return entidades.stream()
-            .filter(alugueis -> alugueis.getDevolvido() == false)
+            .filter(alugueis -> alugueis.getDevolvido() == true)
             .toList();
+  }
+
+  public boolean removerAluguel(Aluguel aluguel){
+    if (entidades.remove(aluguel)) {
+      return true;
+    }
+    return false;
   }
 
 }

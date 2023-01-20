@@ -1,7 +1,6 @@
 package controller;
 
 import util.ConsoleUIHelper;
-import view.AluguelView;
 
 public class MenuController {
 

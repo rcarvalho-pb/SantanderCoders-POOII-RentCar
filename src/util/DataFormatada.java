@@ -19,4 +19,17 @@ public class DataFormatada {
     return stringParaLocalDateTime(data);
 
   }
+
+  public static Boolean dataRetiradaValida(String dataRetirada){
+    if(DataFormatada.stringParaLocalDateTime(dataRetirada).isBefore(LocalDateTime.now())) return false;
+    return true;
+  }
+
+  public static Boolean dataDevolucaoAnteriorRetirada(String dataRetirada, String dataDevolucao){
+    if (DataFormatada.stringParaLocalDateTime(dataDevolucao).isBefore(DataFormatada.stringParaLocalDateTime(dataRetirada))){
+      System.out.println("Data inválida. Não é possível devolver o carro antes de alugar. ");
+      return false;
+    }
+    return true;
+  }
 }
