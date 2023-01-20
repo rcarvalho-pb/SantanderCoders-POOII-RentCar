@@ -15,11 +15,6 @@ public class ClienteEmMemoriaRepository extends RepositorioGenericoAbstract<Clie
                 .toList();
     }
 
-    public List<Cliente> buscarPorNome(String nome) {
-        return this.entidades.stream()
-                .filter(cliente -> cliente.getNome().toLowerCase().contains(nome.toLowerCase()))
-                .toList();
-    }
 
     public boolean salvar(Cliente cliente) {
         if(Controller.verificarItemDuplicado(this.entidades, cliente)) {
@@ -29,13 +24,4 @@ public class ClienteEmMemoriaRepository extends RepositorioGenericoAbstract<Clie
         return true;
     }
 
-    public Cliente selecionarCliente(){
-      if (!entidades.isEmpty() && entidades.size() == 1){
-            return entidades.get(0);
-        }
-
-        String documentoCliente = ConsoleUIHelper.askSimpleInput("Qual o documento do cliente? ");
-
-        return buscarPeloId(documentoCliente);
-    }
 }

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import controller.AgenciaController;
 import model.Agencia;
-import util.ConsoleUIHelper;
 
 import java.io.FileReader;
 import java.io.IOException;

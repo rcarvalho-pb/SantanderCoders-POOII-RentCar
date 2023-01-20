@@ -11,7 +11,7 @@ public class MenuController {
 
     public static void direcionarMenu(int opcao) {
         switch (opcao) {
-            case 0 -> VeiculoController.getInstancia().cadastrarVeiculo();    //método da opção 0 do menu
+            case 0 -> VeiculoController.getInstancia().cadastrarVeiculo();
             case 1 -> VeiculoController.getInstancia().removerVeiculo();
             case 2 -> VeiculoController.getInstancia().alterarVeiculo();
             case 3 -> VeiculoController.getInstancia().buscarVeiculo();
@@ -28,7 +28,7 @@ public class MenuController {
             case 14 -> AluguelController.getInstancia().gerarComprovanteAluguel();
             case 15 -> AluguelController.getInstancia().gerarComprovanteDevolucao();
             case 16 -> {
-              System.out.println("Finalizando aplicação...");
+              System.out.println("\nFinalizando aplicação...\n");
               System.exit(0);
             }
             default -> System.out.println("\nErro desconhecido\n");       //tratamento de erro feito por ConsoleUIHelper

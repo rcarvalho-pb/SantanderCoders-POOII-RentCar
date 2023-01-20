@@ -32,14 +32,6 @@
     "tipoVeiculo": "CARRO"
   },
   {
-    "placa": "6547",
-    "cor": "azul",
-    "modelo": "Honda",
-    "fabricante": "Honda",
-    "disponivel": true,
-    "tipoVeiculo": "MOTO"
-  },
-  {
     "placa": "8745",
     "cor": "amarelo",
     "modelo": "Yamaha",
@@ -62,5 +54,13 @@
     "fabricante": "Iveco",
     "disponivel": true,
     "tipoVeiculo": "CAMINHAO"
+  },
+  {
+    "placa": "4321",
+    "cor": "branco",
+    "modelo": "Honda",
+    "fabricante": "Honda",
+    "disponivel": true,
+    "tipoVeiculo": "MOTO"
   }
 ]

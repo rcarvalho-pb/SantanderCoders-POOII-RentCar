@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import controller.ClienteController;
 import model.Cliente;
-import util.ConsoleUIHelper;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,14 +45,6 @@ public class ClienteJsonRepository extends RepositorioJsonGenericoAbstract<Clien
                 .filter(cliente -> cliente.getNome().toLowerCase().contains(nome.toLowerCase()))
                 .toList();
     }
-    
-    // public boolean salvar(Cliente cliente) {
-    //     if(Controller.verificarItemDuplicado(this.entidades, cliente)) {
-    //         return false;
-    //     }
-    //     this.entidades.add(cliente);
-    //     return true;
-    // }
 
     public Cliente selecionarCliente(){
 
