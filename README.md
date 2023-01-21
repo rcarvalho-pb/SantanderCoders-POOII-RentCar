@@ -57,3 +57,7 @@ Criar uma aplicação que gerencie o aluguel de veículos, onde cada item abaixo
 - Realizar uma apresentação apresentando os pontos mais desafiadores do projeto, os perrengues passados e um resumo do que foi entregue e o que não pode ser entregue;
 - Explicar onde aplicaram os pontos aprendidos nesse módulo;
   Destacando os príncipios SOLID aplicados, e os que não foram utilizados o porquê.
+  
+  
+ ## Link da apresentação:
+ https://1drv.ms/p/s!AjTaj8lKfBxz4nvV-2WiSQLWuDGT?e=Fjy7j4
